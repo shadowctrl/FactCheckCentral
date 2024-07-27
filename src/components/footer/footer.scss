@@ -1,0 +1,72 @@
+@import "../../styles/styles.scss";
+
+.footer-parent {
+    background-color: #ffc617;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    padding: 4vh 2vw;
+}
+
+.footer-components {
+    @include flex-center();
+    justify-content: space-between;
+    align-items: flex-start;
+    color: white;
+    h2 {
+        font-size: $--32px;
+    }
+}
+.footer-container-main {
+    p {
+        font-size: $--12px;
+        font-family: sans-serif;
+        font-weight: 600;
+        margin-top: -1vh;
+    }
+}
+.footer-container {
+    @include flex-center();
+    gap: 1vw;
+
+    font-size: $--32px;
+    justify-content: flex-start;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+
+    a {
+        list-style-type: circle;
+        font-size: 1.2rem;
+
+        &:hover {
+            color: black;
+            text-decoration: underline;
+        }
+    }
+}
+
+.footer-links-container {
+    @include flex-center();
+    gap: 1vw;
+}
+
+.footer-contact {
+    @include flex-center(column);
+    gap: 1vh;
+    align-items: flex-start;
+}
+.footer-icons-parent {
+    @include flex-center();
+    gap: 0.5vw;
+    a:hover {
+        color: black;
+        text-decoration: underline;
+    }
+}
+.footer-icons {
+    font-size: 2.1rem;
+}

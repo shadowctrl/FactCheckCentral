@@ -1,7 +1,7 @@
 import { Inter, Bebas_Neue } from "next/font/google";
 import "./globals.scss";
 import Navbar from "@/components/navbar/page.jsx";
-
+import Footer from "@/components/footer/page";
 const inter = Inter({ subsets: ["latin"] });
 const bebas = Bebas_Neue({
   subsets: ["latin"],
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} ${bebas.className}`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
