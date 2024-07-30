@@ -3,19 +3,20 @@
 .newsRender-parent {
     @include flex-center();
     width: 100%;
-    margin: 0vh 0;
     padding: 3vh 0;
     border-top: 5px solid $color-theme;
 }
 
 .news-container {
     @include flex-center();
+    justify-content: flex-start;
     gap: 2vw;
     width: 50%;
 }
 
 .newsRender-left {
     @include flex-center(column);
+    flex: 1;
     gap: 2vh;
     div {
         margin-top: 2vh;
@@ -24,6 +25,7 @@
     }
 }
 .newsRender-right {
+    flex: 2;
     h1 {
         font-family: var(--font-bebas);
         font-size: $--38px;

@@ -9,14 +9,17 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
     <div className="newsRender-parent">
       <div className="news-container">
         <div className="newsRender-left">
-          <Image src={thumbnail} width={438} height={11} />
+          <Image src={thumbnail} width={138} height={11} />
           <div>
             <FaXTwitter className="text-3xl fill-yellow-400" />
             <FaFacebook className="text-3xl fill-yellow-400" />
           </div>
         </div>
         <div className="newsRender-right">
-          <h1>{title}</h1>
+          <Link href={refLink} target="_blank">
+            {" "}
+            <h1>{title}</h1>
+          </Link>
           <p>{desc}</p>
           <Link href={refLink} target="_blank">
             <span>READ MORE</span>
