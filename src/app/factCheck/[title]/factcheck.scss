@@ -1,0 +1,23 @@
+@import "../../../styles/styles.scss";
+
+.factcheck-parent {
+    @include flex-center(column);
+    width: 100%;
+    padding: 3vh 3vw;
+    gap: 1vh;
+    justify-content: flex-start;
+    border-top: 4px solid $color-theme;
+    h1 {
+        font-size: $--48px;
+        color: $color-theme;
+    }
+    p {
+        border: 1px solid rgb(0, 0, 0, 0.3);
+        border-radius: 1vw;
+        box-shadow: 0vw 0vw 1vw 2px $color-theme;
+        padding: 3vh 2vw;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        color: rgb(0, 0, 0, 0.7);
+    }
+}

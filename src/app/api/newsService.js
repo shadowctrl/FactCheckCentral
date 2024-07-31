@@ -1,6 +1,6 @@
 // app/api/newsService.js
 export const fetchNews = async (category, page = 1, count = 15) => {
-  const apiKey = process.env.api_key;
+  const apiKey = process.env.azure_api_key;
   const offset = (page - 1) * count;
   const url = `https://api.bing.microsoft.com/v7.0/news/search?cc=us&category=${category}&count=${count}&offset=${offset}&q=${category}&sortBy=Date`;
 

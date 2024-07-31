@@ -34,9 +34,18 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             <h1>{title}</h1>
           </Link>
           <p>{desc}...</p>
-          <Link href={refLink} target="_blank">
-            <span>READ MORE</span>
-          </Link>
+          <div className="flex justify-between">
+            <Link href={refLink} target="_blank">
+              <span>READ MORE</span>
+            </Link>
+            <Link href={`/factCheck/${title}`} target="_blank">
+              {" "}
+              <span className="fact-check cursor-pointer">
+                Check Fact Score
+              </span>
+            </Link>
+          </div>
+
           <p>{date}</p>
         </div>
       </div>
