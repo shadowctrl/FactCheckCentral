@@ -1,4 +1,10 @@
-import Skeleton from "react-loading-skeleton";
 export default function Loading() {
-  return <Skeleton />;
+  return (
+    <div className="skeleton-container">
+      <div className="skeleton-title"></div>
+      <div className="skeleton-line"></div>
+      <div className="skeleton-line"></div>
+      <div className="skeleton-line"></div>
+    </div>
+  );
 }
