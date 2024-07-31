@@ -3,6 +3,8 @@ import "./globals.scss";
 import Navbar from "@/components/navbar/page.jsx";
 import Footer from "@/components/footer/page";
 const inter = Inter({ subsets: ["latin"] });
+import Loading from "@/app/loading.js";
+import { Suspense } from "react";
 const bebas = Bebas_Neue({
   subsets: ["latin"],
   weight: ["400"],
@@ -19,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} ${bebas.className}`}>
         <Navbar />
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
         <Footer />
       </body>
     </html>
