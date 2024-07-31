@@ -64,7 +64,10 @@ These, include:
 
 - Quick summary of news one
 - Quick summary of news two
-- Quick summary of news three`;
+- Quick summary of news three
+
+I'm displaying this in a website so please don't say anything like I'm unable to browser just the answers from the two scenario. Also don't include clickable links in words just give the links directly 
+`;
 
   const res = await openai.chat.completions.create({
     messages: [{ role: "user", content }],
