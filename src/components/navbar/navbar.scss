@@ -49,3 +49,9 @@
         }
     }
 }
+
+.nav-container {
+    @include flex-center();
+    gap: 5vw;
+    padding: 1vh 0;
+}

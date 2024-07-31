@@ -1,0 +1,44 @@
+@import "../../styles/styles.scss";
+
+.search-paret {
+}
+
+.search-input {
+    border: 3px solid black;
+    border-radius: 1vw;
+    width: 30vw;
+    padding: 0 1vw;
+    position: relative;
+
+    &::placeholder {
+        text-align: center;
+    }
+}
+
+.search-dropdown {
+    position: absolute;
+    border: 3px solid black;
+    border-radius: 0.5vw;
+    margin-top: 1vh;
+    z-index: 1;
+    background-color: rgb(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    width: 30vw;
+    @include flex-center(column);
+
+    a {
+        font-family: "open sans", sans-serif;
+        font-size: $--16px;
+        color: white;
+        text-align: center;
+        padding: 1vh 1vw;
+        width: 100%;
+        border-bottom: 2px dotted $color-theme;
+        &:last-child {
+            border-bottom: none;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
