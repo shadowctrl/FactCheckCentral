@@ -16,8 +16,16 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             className=" rounded-md"
           />
           <div>
-            <FaXTwitter className="text-3xl fill-yellow-400" />
-            <FaFacebook className="text-3xl fill-yellow-400" />
+            <Link href="https://twitter.com/senseaboutsci" target="_blank">
+              <FaXTwitter className="text-3xl fill-yellow-400" />
+            </Link>
+            <Link
+              href="https://www.facebook.com/senseaboutscience"
+              target="_blank"
+            >
+              {" "}
+              <FaFacebook className="text-3xl fill-yellow-400" />
+            </Link>
           </div>
         </div>
         <div className="newsRender-right">
@@ -25,7 +33,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             {" "}
             <h1>{title}</h1>
           </Link>
-          <p>{desc}</p>
+          <p>{desc}...</p>
           <Link href={refLink} target="_blank">
             <span>READ MORE</span>
           </Link>
