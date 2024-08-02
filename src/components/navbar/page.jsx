@@ -51,6 +51,11 @@ const Navbar = () => {
             <li>Sports</li>
           </Link>
         </ul>
+        <div className="nav-fact-search-user">
+          <Link href="/factCheck" target="_blank">
+            Fact Checker
+          </Link>
+        </div>
         <div className="nav-search">
           <Search />
         </div>

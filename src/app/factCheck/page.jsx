@@ -38,7 +38,7 @@ const FactCheck = () => {
     e.preventDefault();
     setIsLoading(true); // Start loading animation
     const prompt = e.target.elements.inputField.value;
-    const res = await fetch("http://localhost:3000/api/searchFact", {
+    const res = await fetch("/api/searchFact", {
       method: "POST",
       body: JSON.stringify({ prompt }),
       headers: { "Content-Type": "application/json" },

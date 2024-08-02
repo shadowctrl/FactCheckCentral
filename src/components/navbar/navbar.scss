@@ -55,3 +55,20 @@
     gap: 5vw;
     padding: 1vh 0;
 }
+
+.nav-fact-search-user {
+    @include flex-center();
+
+    a {
+        font-weight: 500;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        padding: 2px 10px;
+        border-radius: 1vw;
+        color: black;
+        background-color: $color-theme;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
