@@ -44,9 +44,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
         setVoteDetails(null);
       }
     };
-    setTimeout(() => {
-      fetchData();
-    }, 3000);
+    fetchData();
   }, [title]);
 
   return (
