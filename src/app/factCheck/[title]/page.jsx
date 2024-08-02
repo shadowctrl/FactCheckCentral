@@ -1,7 +1,5 @@
 import { factFetch } from "@/app/api/factService.js";
 import "./factcheck.scss";
-import { Suspense } from "react";
-import Loading from "@/app/loading";
 import Link from "next/link";
 
 const parseMessage = (message) => {
@@ -31,12 +29,10 @@ const Page = async ({ params }) => {
   const message = await factFetch(data);
 
   return (
-    <Suspense fallback={<Loading />}>
-      <div className="factcheck-parent">
-        <h1>Your Fact Check Result is Here!</h1>
-        <div className="fact-response">{parseMessage(message)}</div>
-      </div>
-    </Suspense>
+    <div className="factcheck-parent">
+      <h1>Your Fact Check Result is Here!</h1>
+      <div className="fact-response">{parseMessage(message)}</div>
+    </div>
   );
 };
 
