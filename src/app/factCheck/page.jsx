@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
 import "./factcheckuser.scss";
+import "./[title]/factcheck.scss";
 import Link from "next/link"; // Assuming you're using Next.js, import Link
+import Share from "@/components/share/share";
 
 const parseMessage = (message) => {
   const lines = message.split("\n");
@@ -12,7 +14,13 @@ const parseMessage = (message) => {
       <p
         style={
           index === 0
-            ? { color: "rgb(0, 0, 0,1)", fontWeight: 700, fontSize: "20px" }
+            ? {
+                color: "rgb(0, 0, 0,1)",
+                fontWeight: 700,
+                fontSize: "20px",
+                marginTop: "-4vh",
+                paddingBottom: "2vh",
+              }
             : { color: "rgb(0, 0, 0,0.7)", fontWeight: 600 }
         }
       >
@@ -69,13 +77,12 @@ const FactCheck = () => {
       {isLoading ? (
         <div className="loader"></div>
       ) : (
-        <div
-          className={`fact-user-response ${
-            message ? "fact-check-user-active" : "fact-check-user-none"
-          }`}
-        >
-          {message}
-        </div>
+        message && (
+          <div className="fact-response">
+            <Share title={""} message={message} />
+            <div className={`fact-response-para`}> {message}</div>
+          </div>
+        )
       )}
     </div>
   );
