@@ -24,7 +24,13 @@ const Search = ({}) => {
 
   const fetchResults = async (query) => {
     if (query.length > 2) {
-      const data = await fetchNews(query, 1, 4, true);
+      const res = await fetch("/api/searchNews", {
+        method: "POST",
+        body: JSON.stringify({ query }),
+        headers: { "Content-Type": "application/json" },
+        next: { revalidate: 3600 },
+      });
+      const data = await res.json();
       setResults(data);
       setIsResultsVisible(true);
     } else {
