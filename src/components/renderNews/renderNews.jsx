@@ -19,7 +19,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
 
       await fetch("/api/voteAdd", {
         method: "POST",
-        body: JSON.stringify(title),
+        body: JSON.stringify({ title }),
       });
     } else {
       setVote("down");
@@ -34,7 +34,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
     const fetchData = async () => {
       const response = await fetch("/api/getVote", {
         method: "POST",
-        body: JSON.stringify(title),
+        body: JSON.stringify({ title: title }),
       });
 
       if (response.status === 200) {
@@ -44,7 +44,9 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
         setVoteDetails(null);
       }
     };
-    fetchData();
+    setTimeout(() => {
+      fetchData();
+    }, 3000);
   }, [title]);
 
   return (
