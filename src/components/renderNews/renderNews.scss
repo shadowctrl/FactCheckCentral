@@ -18,7 +18,7 @@
     @include flex-center(column);
     flex: 1;
     gap: 2vh;
-    div {
+    div div {
         margin-top: 2vh;
         @include flex-center();
         gap: 1vw;
@@ -77,10 +77,28 @@
         color: black;
     }
 }
-
+.vote-icon-disabled {
+    color: $color-theme;
+    font-size: $--42px;
+    border: 2px solid $color-theme;
+    padding: 6px;
+    border-radius: 100%;
+}
 .vote-icon-green {
     color: rgb(0, 255, 0);
 }
 .vote-icon-red {
     color: red;
+}
+
+.vote-details {
+    font-size: 10px;
+    font-family: sans-serif;
+    font-weight: 100;
+    color: rgb(0, 0, 0, 0.5);
+    margin-top: -1vh;
+}
+
+.voteDetails-container {
+    @include flex-center(column);
 }

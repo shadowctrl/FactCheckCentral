@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
     "next": "14.2.5",
     "openai": "^4.53.2",

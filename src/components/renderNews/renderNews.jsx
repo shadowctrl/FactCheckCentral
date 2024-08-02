@@ -3,29 +3,48 @@ import { useEffect, useState } from "react";
 import "./renderNews.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
   const [vote, setVote] = useState(null);
-  const handleVote = (value) => {
-    if (value == "up") {
+  const [voteDetails, setVoteDetails] = useState(null); // Initialize as null to hide initially
+
+  const handleVote = async (value) => {
+    if (value === "up") {
       setVote("up");
       localStorage.setItem(title, "up");
+      setVoteDetails((currentVote) =>
+        currentVote === null ? 1 : currentVote + 1
+      );
+
+      await fetch("/api/voteAdd", {
+        method: "POST",
+        body: JSON.stringify(title),
+      });
     } else {
       setVote("down");
       localStorage.setItem(title, "down");
     }
   };
-  const handleCancel = () => {
-    setVote(null);
-    localStorage.removeItem(title);
-  };
 
   useEffect(() => {
     const storedVote = localStorage.getItem(title);
     if (storedVote) setVote(storedVote);
+
+    const fetchData = async () => {
+      const response = await fetch("/api/getVote", {
+        method: "POST",
+        body: JSON.stringify(title),
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setVoteDetails(data.vote || null); // Set to null if no votes
+      } else if (response.status === 404) {
+        setVoteDetails(null);
+      }
+    };
+    fetchData();
   }, [title]);
 
   return (
@@ -36,12 +55,11 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             src={thumbnail}
             width={138}
             height={11}
-            className=" rounded-md"
+            className="rounded-md"
           />
-          <div>
+          <div className="voteDetails-container">
             {!vote ? (
               <div>
-                {" "}
                 <FaThumbsUp
                   onClick={() => handleVote("up")}
                   className="vote-icon"
@@ -51,16 +69,17 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
                   className="vote-icon"
                 />
               </div>
-            ) : vote == "up" ? (
-              <FaThumbsUp
-                onClick={() => handleCancel()}
-                className="vote-icon vote-icon-green"
-              />
+            ) : vote === "up" ? (
+              <FaThumbsUp className="vote-icon-disabled vote-icon-green" />
             ) : (
-              <FaThumbsDown
-                onClick={() => handleCancel()}
-                className="vote-icon vote-icon-red"
-              />
+              <FaThumbsDown className="vote-icon-disabled vote-icon-red" />
+            )}
+            {voteDetails !== null && (
+              <div>
+                <p className="vote-details">
+                  {voteDetails} people found this helful
+                </p>
+              </div>
             )}
           </div>
         </div>
@@ -70,7 +89,6 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
-            {" "}
             <h1>{title}</h1>
           </Link>
           <p>{desc}...</p>
@@ -83,13 +101,11 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
               <span>READ MORE</span>
             </Link>
             <Link href={`/factCheck/${title}`} target="_blank">
-              {" "}
               <span className="fact-check cursor-pointer">
                 Check Fact Score
               </span>
             </Link>
           </div>
-
           <p>{date}</p>
         </div>
       </div>
