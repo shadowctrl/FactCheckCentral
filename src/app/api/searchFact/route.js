@@ -4,7 +4,9 @@ const openai = new OpenAI({
   apiKey: `${process.env.openai_api_key}`,
 });
 
-export const factFetch = async (prompt) => {
+export const POST = async (req) => {
+  const { prompt } = await req.json();
+  console.log(prompt);
   const content = `Can you factcheck this info: ${prompt}
 
 
@@ -74,5 +76,5 @@ I'm displaying this in a website so please don't say anything like I'm unable to
     model: "gpt-4o",
   });
 
-  return res.choices[0].message.content;
+  return Response.json(res.choices[0].message.content);
 };

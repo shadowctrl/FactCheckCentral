@@ -1,0 +1,27 @@
+@import "../../styles//styles.scss";
+
+.user-fact-check-parent {
+    text-align: center;
+    height: 50vh;
+    padding: 2vh 2vw;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        font-size: $--48px;
+        color: $color-theme;
+    }
+    input {
+        border: 2px solid black;
+        border-radius: 1vw;
+        padding: 0 1vw;
+        text-align: start;
+        width: 30%;
+        height: $--38px;
+        &::placeholder {
+            text-align: center;
+        }
+    }
+}

@@ -1,6 +1,6 @@
-import "./factcheck.scss";
-import Link from "next/link";
+"use client";
 
+import "./factcheckuser.scss";
 const parseMessage = (message) => {
   let parsedMessage = message.replace(/\*\*(.*?)\*\*/g, "$1");
   const lines = parsedMessage.split(/\n/g);
@@ -22,21 +22,13 @@ const parseMessage = (message) => {
     </div>
   ));
 };
-
-const Page = async ({ params }) => {
-  const prompt = decodeURIComponent(params.title);
-  const res = await fetch("http://localhost:3000/api/searchFact", {
-    method: "POST",
-    body: JSON.stringify({ prompt: `${prompt}` }),
-    headers: { "Content-Type": "application/json" },
-  });
-  const message = await res.json();
+const factCheck = ({}) => {
   return (
-    <div className="factcheck-parent">
-      <h1>Your Fact Check Result is Here!</h1>
-      <div className="fact-response">{parseMessage(message)}</div>
+    <div className="user-fact-check-parent">
+      <h1>Check Your Fact Score Here</h1>
+      <input type="text" placeholder="Check your fact score now!" />
     </div>
   );
 };
 
-export default Page;
+export default factCheck;
