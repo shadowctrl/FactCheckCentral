@@ -6,7 +6,6 @@ const openai = new OpenAI({
 
 export const POST = async (req) => {
   const { prompt } = await req.json();
-  console.log(prompt);
   const content = `Can you factcheck this info: ${prompt}
 
 

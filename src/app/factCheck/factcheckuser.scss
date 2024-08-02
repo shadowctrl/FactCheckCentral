@@ -2,17 +2,23 @@
 
 .user-fact-check-parent {
     text-align: center;
-    height: 50vh;
+    min-height: 50vh;
     padding: 2vh 2vw;
     display: flex;
     flex-direction: column;
+    gap: 5vh;
     // justify-content: space-between;
+    width: 100%;
     align-items: center;
 
     h1 {
         font-size: $--48px;
         color: $color-theme;
     }
+}
+
+.user-fact-check-container {
+    width: 100%;
     input {
         border: 2px solid black;
         border-radius: 1vw;
@@ -24,4 +30,38 @@
             text-align: center;
         }
     }
+    button {
+        border: 2px solid black;
+        border-left: 0;
+        border-radius: 0 1vw 1vw 0;
+        padding: 0 1vw;
+        height: $--38px;
+        font-size: $--18px;
+        margin-left: -1vw;
+        padding-left: 2vw;
+    }
+}
+.fact-user-response {
+    border: 1px solid rgb(0, 0, 0, 0.3);
+    border-radius: 1vw;
+    box-shadow: 0vw 0vw 1vw 2px $color-theme;
+    padding: 3vh 2vw;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    color: rgb(0, 0, 0, 0.7);
+    text-align: left;
+    line-height: $--32px;
+
+    a {
+        color: skyblue;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.fact-check-user-active {
+    display: block;
+}
+.fact-check-user-none {
+    display: none;
 }
