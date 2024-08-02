@@ -32,7 +32,7 @@ const parseMessage = (message) => {
 
 const Page = async ({ params }) => {
   const prompt = decodeURIComponent(params.title);
-  const res = await fetch("/api/searchFact", {
+  const res = await fetch(`${process.env.base_url}/api/searchFact`, {
     method: "POST",
     body: JSON.stringify({ prompt: `${prompt}` }),
     headers: { "Content-Type": "application/json" },
