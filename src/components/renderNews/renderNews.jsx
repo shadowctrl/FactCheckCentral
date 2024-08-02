@@ -39,18 +39,6 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             className=" rounded-md"
           />
           <div>
-            <Link href="https://twitter.com/senseaboutsci" target="_blank">
-              <FaXTwitter className="text-3xl fill-yellow-400" />
-            </Link>
-            <Link
-              href="https://www.facebook.com/senseaboutscience"
-              target="_blank"
-            >
-              {" "}
-              <FaFacebook className="text-3xl fill-yellow-400" />
-            </Link>
-          </div>
-          <div>
             {!vote ? (
               <div>
                 {" "}
