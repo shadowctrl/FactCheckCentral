@@ -25,7 +25,7 @@ const page = async ({ params }) => {
           refLink={val.url}
         />
       ))}
-      <Pagination maxPage={3} category={params.category} />
+      <Pagination maxPage={5} category={params.category} />
     </div>
   );
 };

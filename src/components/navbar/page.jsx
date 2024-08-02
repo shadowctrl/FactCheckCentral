@@ -12,7 +12,7 @@ const Navbar = () => {
             <Image src={"/logo.png"} width={106} height={102} />{" "}
           </Link>
           <div className="nav-head1">
-            <Link href="/news/all/1">
+            <Link href="/news/world/1">
               {" "}
               <h1>fact check central</h1>
             </Link>

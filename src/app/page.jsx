@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default async function Home() {
-  return redirect("/news/all/1");
+  return redirect("/news/world/1");
 }
