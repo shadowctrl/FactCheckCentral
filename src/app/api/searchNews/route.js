@@ -1,10 +1,10 @@
 // app/api/newsService.js
 export const POST = async (req, res) => {
   const allowedOrigin = "https://fact-check-central.vercel.app";
-  if (req.headers.origin !== allowedOrigin)
-    return new Response("You are not authorised to access the resource", {
-      status: 401,
-    });
+  if (req.headers.origin !== allowedOrigin) console.log(req.headers.origin);
+  return new Response("You are not authorised to access the resource", {
+    status: 401,
+  });
   const { query } = await req.json();
   const page = 1;
   const count = 4;
