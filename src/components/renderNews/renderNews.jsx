@@ -1,10 +1,33 @@
+"use client";
+import { useEffect, useState } from "react";
 import "./renderNews.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
+  const [vote, setVote] = useState(null);
+  const handleVote = (value) => {
+    if (value == "up") {
+      setVote("up");
+      localStorage.setItem(title, "up");
+    } else {
+      setVote("down");
+      localStorage.setItem(title, "down");
+    }
+  };
+  const handleCancel = () => {
+    setVote(null);
+    localStorage.removeItem(title);
+  };
+
+  useEffect(() => {
+    const storedVote = localStorage.getItem(title);
+    if (storedVote) setVote(storedVote);
+  }, [title]);
+
   return (
     <div className="newsRender-parent">
       <div className="news-container">
@@ -26,6 +49,31 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
               {" "}
               <FaFacebook className="text-3xl fill-yellow-400" />
             </Link>
+          </div>
+          <div>
+            {!vote ? (
+              <div>
+                {" "}
+                <FaThumbsUp
+                  onClick={() => handleVote("up")}
+                  className="vote-icon"
+                />
+                <FaThumbsDown
+                  onClick={() => handleVote("down")}
+                  className="vote-icon"
+                />
+              </div>
+            ) : vote == "up" ? (
+              <FaThumbsUp
+                onClick={() => handleCancel()}
+                className="vote-icon vote-icon-green"
+              />
+            ) : (
+              <FaThumbsDown
+                onClick={() => handleCancel()}
+                className="vote-icon vote-icon-red"
+              />
+            )}
           </div>
         </div>
         <div className="newsRender-right">

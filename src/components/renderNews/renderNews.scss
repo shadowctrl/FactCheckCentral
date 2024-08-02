@@ -63,3 +63,23 @@
         font-size: $--12px;
     }
 }
+
+.vote-icon {
+    color: $color-theme;
+    font-size: $--42px;
+    border: 2px solid $color-theme;
+    padding: 6px;
+    border-radius: 100%;
+    cursor: pointer;
+
+    &:hover {
+        color: black;
+    }
+}
+
+.vote-icon-green {
+    color: rgb(0, 255, 0);
+}
+.vote-icon-red {
+    color: red;
+}
