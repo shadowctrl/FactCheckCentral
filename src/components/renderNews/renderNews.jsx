@@ -77,7 +77,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             {voteDetails !== null && (
               <div>
                 <p className="vote-details">
-                  {voteDetails} people found this helful
+                  {voteDetails} people found this helful.
                 </p>
               </div>
             )}

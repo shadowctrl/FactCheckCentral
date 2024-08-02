@@ -1,3 +1,4 @@
+import Share from "@/components/share/share";
 import "./factcheck.scss";
 import Link from "next/link";
 
@@ -40,7 +41,10 @@ const Page = async ({ params }) => {
   return (
     <div className="factcheck-parent">
       <h1>Your Fact Check Result is Here!</h1>
-      <div className="fact-response">{parseMessage(message)}</div>
+      <div className="fact-response">
+        <Share title={prompt} message={message} />
+        <div className="fact-response-para">{parseMessage(message)}</div>
+      </div>
     </div>
   );
 };

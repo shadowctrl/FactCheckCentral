@@ -46,12 +46,14 @@
     border-radius: 1vw;
     box-shadow: 0vw 0vw 1vw 2px $color-theme;
     padding: 3vh 2vw;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
+    margin-bottom: 5vh;
+}
+.fact-user-response-para {
     color: rgb(0, 0, 0, 0.7);
     text-align: left;
     line-height: $--32px;
-    margin-bottom: 5vh;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
     a {
         color: skyblue;
         &:hover {

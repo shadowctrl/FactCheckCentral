@@ -1,0 +1,58 @@
+@import "../../styles//styles.scss";
+
+.share-parent {
+    @include flex-center();
+    justify-content: flex-end;
+
+    .share-head {
+        @include flex-center();
+        font-size: $--18px;
+        gap: 2px;
+        font-family: var(--font-bebas);
+        font-weight: 600;
+        letter-spacing: 1px;
+        position: relative;
+        cursor: pointer;
+    }
+}
+
+.share-content {
+    position: absolute;
+    margin-top: -11vh;
+    font-size: $--24px;
+    @include flex-center();
+    gap: 1.5vw;
+    color: $color-theme;
+    border: 1px dotted black;
+    padding: 8px;
+    border-radius: 1vw;
+    background-color: rgb(0, 0, 0, 0.7);
+}
+.share-content-active {
+    animation: shareAnim 0.3s ease-in forwards;
+}
+@keyframes shareAnim {
+    0% {
+        transform: translateY(2vh);
+        opacity: 0;
+        display: none;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.share-content-inactive {
+    animation: shareAnimHide 0.3s ease-out forwards;
+}
+@keyframes shareAnimHide {
+    0% {
+        transform: translateY(0vh);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(2vh);
+        display: none;
+    }
+}
