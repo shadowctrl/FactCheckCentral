@@ -52,8 +52,8 @@ const FactCheck = () => {
 
   return (
     <div className="user-fact-check-parent">
-      <h1>Check Your Fact Score Here</h1>
       <div className="user-fact-check-container">
+        <h1>Check Your Fact Score Here</h1>
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
             type="text"

@@ -1,20 +1,9 @@
 import { OpenAI } from "openai";
-import { headers } from "next/headers";
 const openai = new OpenAI({
   apiKey: `${process.env.openai_api_key}`,
 });
 
 export const POST = async (req) => {
-  const headersList = headers();
-  const allowedOrigin = [
-    "http://localhost:3000",
-    "https://fact-check-central.vercel.app",
-  ];
-  if (!allowedOrigin.includes(headersList.get("origin"))) {
-    return new Response("You are not authorised to access this resource", {
-      status: 401,
-    });
-  }
   const { prompt } = await req.json();
   const content = `Can you factcheck this info: ${prompt}
 
