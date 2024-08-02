@@ -1,7 +1,6 @@
 "use client";
 import "./search.scss";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { fetchNews } from "@/app/api/newsService";
 import Link from "next/link";
 
 const Search = ({}) => {

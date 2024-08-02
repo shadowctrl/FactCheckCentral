@@ -1,19 +1,23 @@
 "use client";
 import "./share.scss";
+import { useState } from "react";
 import { FiShare } from "react-icons/fi";
 import { FaXTwitter, FaWhatsapp } from "react-icons/fa6"; // Updated icon
 import { IoLink, IoMailUnread } from "react-icons/io5";
-
+import { Alert } from "antd";
 const Share = ({ title, message }) => {
   const shareText = `*Check out this amazing fact score on Fact Check Central!* 
   
   *${title}*
   
   ${message}`;
-
+  const [alert, showAlert] = useState(false);
   const handleCopy = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert("Link copied to clipboard!");
+    showAlert(true);
+    setTimeout(() => {
+      showAlert(false);
+    }, 5000);
   };
 
   const handleShareViaEmail = () => {
@@ -45,8 +49,17 @@ const Share = ({ title, message }) => {
 
   return (
     <div className="share-parent">
+      {alert === true && (
+        <div className="alert-message">
+          <Alert
+            message="Link copied to clipboard"
+            type="success"
+            style={{ fontSize: "1.3vw" }}
+          />
+        </div>
+      )}
       <h3 className="share-head" onClick={handleShareClick}>
-        Share <FiShare />
+        Share <FiShare />{" "}
       </h3>
       <div id="share-content" className="share-content share-content-inactive">
         <IoLink

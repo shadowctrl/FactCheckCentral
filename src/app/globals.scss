@@ -5,6 +5,7 @@
 
 body {
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 /* styles/globals.css (or a dedicated CSS/SCSS file for skeletons) */
 
@@ -38,5 +39,21 @@ body {
 @keyframes l1 {
   to {
     transform: rotate(0.5turn);
+  }
+}
+
+.alert-message {
+  position: absolute;
+  top: 5%;
+  right: -15%;
+  animation: swipeLeft 0.2s ease-in forwards;
+}
+
+@keyframes swipeLeft {
+  0% {
+    right: -15%;
+  }
+  100% {
+    right: 0%;
   }
 }
