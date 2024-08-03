@@ -8,7 +8,6 @@ import Share from "@/components/share/share";
 const parseMessage = (message) => {
   const lines = message.split("\n");
   const urlRegex = /(https?:\/\/[^\s]+)/g;
-  console.log(lines);
   return lines.map((line, index) => (
     <div key={index}>
       <p
@@ -41,11 +40,12 @@ const parseMessage = (message) => {
 const FactCheck = () => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const [title, setTitle] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Start loading animation
     const prompt = e.target.elements.inputField.value;
+    setTitle(prompt);
     const res = await fetch("/api/searchFact", {
       method: "POST",
       body: JSON.stringify({ prompt }),
@@ -79,7 +79,7 @@ const FactCheck = () => {
       ) : (
         message && (
           <div className="fact-response">
-            <Share title={""} message={message} />
+            <Share title={title} message={message} />
             <div className={`fact-response-para`}> {message}</div>
           </div>
         )

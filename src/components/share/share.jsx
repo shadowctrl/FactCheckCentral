@@ -13,7 +13,9 @@ const Share = ({ title, message }) => {
   ${message}`;
   const [alert, showAlert] = useState(false);
   const handleCopy = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(
+      `${window.location.origin}/factCheck/${title}`
+    );
     showAlert(true);
     setTimeout(() => {
       showAlert(false);
