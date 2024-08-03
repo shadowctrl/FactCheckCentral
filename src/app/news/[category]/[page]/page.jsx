@@ -11,10 +11,9 @@ const page = async ({ params }) => {
   const maxpage = 5;
   if (params.page > 5) redirect(`/news/${params.category}/${maxpage}`);
   const data = await fetchNews(params.category, params.page);
-
   return (
     <div>
-      {data.length > 0
+      {data
         ? data.map((val, index) => (
             <RenderNews
               key={index}
