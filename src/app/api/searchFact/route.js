@@ -66,6 +66,11 @@ These, include:
 - Quick summary of news two
 - Quick summary of news three
 
+Place a cross icon and green tick icon at the first line starting based upon response.
+V(check icon) This Information Has Been Fact-Checked And It Is Legitimate.
+
+X(x icon) This Information Has Been Fact-Checked, But It Lacks Enough Proof.
+
 I'm displaying this in a website so please don't say anything like I'm unable to browser just the answers from the two scenario. Also don't include clickable links in words just give the links directly 
 `;
 

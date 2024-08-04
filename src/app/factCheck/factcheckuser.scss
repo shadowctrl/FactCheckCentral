@@ -2,7 +2,7 @@
 
 .user-fact-check-parent {
     text-align: center;
-    min-height: 50vh;
+    min-height: 70vh;
     padding: 2vh 5vw;
     display: flex;
     flex-direction: column;
@@ -10,6 +10,7 @@
     // justify-content: space-between;
     width: 100%;
     align-items: center;
+    padding-bottom: 10vh;
 
     h1 {
         font-size: $--48px;
