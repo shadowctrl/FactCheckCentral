@@ -3,8 +3,7 @@ import "./factcheck.scss";
 import Link from "next/link";
 
 const parseMessage = (message) => {
-  let parsedMessage = message.replace(/\*\*(.*?)\*\*/g, "$1");
-  const lines = parsedMessage.split(/\n/g);
+  const lines = message.split("\n");
   const urlRegex = /(https?:\/\/[^\s]+)/g;
 
   return lines.map((line, index) => (
@@ -18,7 +17,12 @@ const parseMessage = (message) => {
       >
         {line.split(urlRegex).map((part, i) =>
           urlRegex.test(part) ? (
-            <Link key={i} href={part} target="_blank" rel="noopener noreferrer">
+            <Link
+              key={i}
+              href={part}
+              target="_blank"
+              rel="noopener nofollow noreferrer"
+            >
               {part}
             </Link>
           ) : (

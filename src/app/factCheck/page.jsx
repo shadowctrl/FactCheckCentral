@@ -25,7 +25,12 @@ const parseMessage = (message) => {
       >
         {line.split(urlRegex).map((part, i) =>
           urlRegex.test(part) ? (
-            <Link key={i} href={part} target="_blank" rel="noopener noreferrer">
+            <Link
+              key={i}
+              href={part}
+              target="_blank"
+              rel="noopener nofollow noreferrer"
+            >
               {part}
             </Link>
           ) : (
