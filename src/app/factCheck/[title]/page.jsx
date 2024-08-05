@@ -44,7 +44,7 @@ const Page = async ({ params }) => {
   const message = await res.json();
   return (
     <div className="factcheck-parent">
-      <h1>Your Fact Check Result is Here!</h1>
+      <h1>Your fact-checking result is here!!</h1>
       <div className="fact-response">
         <Share title={prompt} message={message} />
         <div className="fact-response-para">{parseMessage(message)}</div>
