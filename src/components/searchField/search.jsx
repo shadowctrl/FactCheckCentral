@@ -71,7 +71,12 @@ const Search = ({}) => {
       {isResultsVisible && results.length > 0 && (
         <ul className="search-dropdown">
           {results.map((val, index) => (
-            <Link href={val.url} key={index} target="_blank">
+            <Link
+              href={val.url}
+              key={index}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
               <li>{val.name}</li>
             </Link>
           ))}
