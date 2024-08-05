@@ -66,7 +66,7 @@ const FactCheck = () => {
   return (
     <div className="user-fact-check-parent">
       <div className="user-fact-check-container">
-        <h1>Check Your Fact Score Here</h1>
+        <h1>Fact-Check Your Content Here</h1>
         <p>
           Enter any URL or topic, and let our advanced A.I. fact-check the
           content for you
