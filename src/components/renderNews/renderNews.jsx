@@ -102,7 +102,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             </Link>
             <Link href={`/factCheck/${title}`} target="_blank">
               <span className="fact-check cursor-pointer">
-                Check Fact Score
+                Fact-check this story
               </span>
             </Link>
           </div>

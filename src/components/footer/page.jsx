@@ -14,10 +14,13 @@ const Footer = ({}) => {
           </div>
           <div>
             <p>
-              Read, Search and share fact checking blogs from across the web.{" "}
-              <br />
-              If you want to discuss the content of any blogs please contact the
-              sites that they are from.
+              Browse and read the latest fact-checked news, or fact-check any
+              type of story yourself, thanks to our advanced AI algorithm.
+              <br />A project by{" "}
+              <Link href="https://aiforeveryone.org/" target="_blank">
+                Ai For Everyone
+              </Link>
+              - Making the world better with A.I.
             </p>
           </div>
         </div>

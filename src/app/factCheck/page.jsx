@@ -67,11 +67,15 @@ const FactCheck = () => {
     <div className="user-fact-check-parent">
       <div className="user-fact-check-container">
         <h1>Check Your Fact Score Here</h1>
+        <p>
+          Enter any URL or topic, and let our advanced A.I. fact-check the
+          content for you
+        </p>
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
             type="text"
             name="inputField"
-            placeholder="Check your fact score now!"
+            placeholder="Enter URL or start typing..."
             required
           />
           <button type="submit" disabled={isLoading}>

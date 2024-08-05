@@ -102,3 +102,15 @@
 .voteDetails-container {
     @include flex-center(column);
 }
+
+.fact-check {
+    border: 2px solid $color-theme;
+    padding: 0.5vh 1vw;
+    border-radius: 1vw;
+
+    &:hover {
+        color: black;
+        background-color: $color-theme;
+        font-weight: 700;
+    }
+}

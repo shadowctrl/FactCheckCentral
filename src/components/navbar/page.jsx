@@ -2,6 +2,8 @@ import "./navbar.scss";
 import Image from "next/image";
 import Link from "next/link";
 import Search from "../searchField/search";
+import { MdFactCheck } from "react-icons/md";
+import { PiDetectiveFill } from "react-icons/pi";
 
 const Navbar = () => {
   return (
@@ -17,12 +19,9 @@ const Navbar = () => {
               <h1>fact check central</h1>
             </Link>
             <p>
-              Read, search and share fact checking blogs from across the web
+              Read, search and fact-check stories and news from across the web
             </p>
           </div>
-        </div>
-        <div className="nav-head-sub">
-          <Image src={"/logo2.jpg"} width={110} height={65} />
         </div>
       </div>
       <div className="nav-container">
@@ -53,7 +52,7 @@ const Navbar = () => {
         </ul>
         <div className="nav-fact-search-user">
           <Link href="/factCheck" target="_blank">
-            Fact Checker
+            Fact-Checker <PiDetectiveFill style={{ fontSize: "1.5rem" }} />
           </Link>
         </div>
         <div className="nav-search">
