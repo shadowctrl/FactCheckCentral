@@ -14,16 +14,17 @@
     @include flex-center();
     gap: 2vw;
     @media (max-width: 768px) {
-        padding: 1vh 3vw;
-        gap: 3vw;
+        padding: 0vh 3vw;
+        gap: 2vw;
+        img {
+            width: 90px;
+        }
     }
 }
 
 .nav-head1 {
     @include flex-center(column);
     align-items: flex-start;
-    @media (max-width: 768px) {
-    }
 
     h1 {
         text-transform: uppercase;
@@ -42,7 +43,7 @@
         font-family: "Open Sans", sans-serif;
         font-weight: 600;
         @media (max-width: 768px) {
-            font-size: $--14px;
+            font-size: $--12px;
         }
     }
 }
@@ -86,6 +87,63 @@
         background-color: $color-theme;
         &:hover {
             text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+    }
+}
+
+//Mobile menu
+
+.menu-icon-mob {
+    font-size: $--38px;
+}
+.menu-icon-close-mob {
+    float: right;
+    font-size: $--38px;
+}
+.slide-nav-mob {
+    right: 0;
+}
+.default-nav-mob {
+    right: -100%;
+}
+.nav-menu-mob {
+    display: none;
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
+body.no-scroll {
+    overflow: hidden;
+}
+@media (max-width: 768px) {
+    .nav-container-mob {
+        position: fixed;
+        top: 0;
+        background-color: white;
+        border-left: 5px solid black;
+        border-radius: 4vh 0 0 4vh;
+        height: 100%;
+        width: 80vw;
+        padding: 2vh 2vw;
+        padding-bottom: 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-category-mob {
+        @include flex-center(column);
+        align-items: flex-start;
+        padding-top: 2vh;
+        gap: 3vh;
+        list-style-type: disc;
+        padding-left: 30%;
+        a {
+            font-size: $--32px;
         }
     }
 }

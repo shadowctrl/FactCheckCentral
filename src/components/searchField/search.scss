@@ -1,6 +1,6 @@
 @import "../../styles/styles.scss";
 
-.search-paret {
+.search-parent {
 }
 
 .search-input {
@@ -12,6 +12,9 @@
 
     &::placeholder {
         text-align: center;
+    }
+    @media (max-width: 768px) {
+        width: 100%;
     }
 }
 
@@ -25,7 +28,9 @@
     backdrop-filter: blur(6px);
     width: 25vw;
     @include flex-center(column);
-
+    @media (max-width: 768px) {
+        width: 100%;
+    }
     a {
         font-family: "open sans", sans-serif;
         font-size: $--16px;

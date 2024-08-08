@@ -2,9 +2,8 @@ import "./navbar.scss";
 import Image from "next/image";
 import Link from "next/link";
 import Search from "../searchField/search";
-import { MdFactCheck } from "react-icons/md";
 import { PiDetectiveFill } from "react-icons/pi";
-
+import NavMob from "./navMob";
 const Navbar = () => {
   return (
     <div className="navbar-parent">
@@ -22,6 +21,7 @@ const Navbar = () => {
               Read, search and fact-check stories and news from across the web
             </p>
           </div>
+          <NavMob />
         </div>
       </div>
       <div className="nav-container">
