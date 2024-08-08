@@ -4,6 +4,9 @@
     background-color: #ffc617;
     width: 100%;
     padding: 4vh 2vw;
+    @media (max-width: 768px) {
+        padding: 2vh 4vw;
+    }
 }
 
 .footer-components {
@@ -13,6 +16,12 @@
     color: white;
     h2 {
         font-size: $--32px;
+    }
+    @media (max-width: 768px) {
+        @include flex-center(column);
+        align-items: flex-start;
+        justify-content: center;
+        gap: 3vh;
     }
 }
 .footer-container-main {
@@ -26,34 +35,56 @@
             text-decoration: underline;
         }
     }
+
+    @media (max-width: 768px) {
+        p {
+            width: 100%;
+            font-size: $--14px;
+        }
+    }
 }
 .footer-container {
     @include flex-center();
     gap: 1vw;
-
     font-size: $--32px;
     justify-content: flex-start;
+    @media (max-width: 768px) {
+        gap: 2vw;
+
+        h1 {
+            font-size: $--38px;
+        }
+    }
 }
 
 .footer-links {
     display: flex;
     flex-direction: column;
     gap: 1vh;
-
     a {
         list-style-type: circle;
         font-size: 1.2rem;
-
+        @media (max-width: 768px) {
+            font-size: $--24px;
+            list-style-type: disc;
+        }
         &:hover {
             color: black;
             text-decoration: underline;
         }
+    }
+    @media (max-width: 768px) {
+        gap: 0;
     }
 }
 
 .footer-links-container {
     @include flex-center();
     gap: 1vw;
+    @media (max-width: 768px) {
+        width: 100%;
+        gap: 10vw;
+    }
 }
 
 .footer-contact {
@@ -68,7 +99,15 @@
         color: black;
         text-decoration: underline;
     }
+
+    @media (max-width: 768px) {
+        margin-left: 2vw;
+        gap: 2vw;
+    }
 }
 .footer-icons {
     font-size: 2.1rem;
+    @media (max-width: 768px) {
+        font-size: 2.5rem;
+    }
 }

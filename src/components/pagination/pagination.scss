@@ -6,6 +6,9 @@
     @include flex-center();
     gap: 1vw;
     padding: 2vh 0;
+    @media (max-width: 768px) {
+        gap: 4vw;
+    }
 }
 
 .page-container {

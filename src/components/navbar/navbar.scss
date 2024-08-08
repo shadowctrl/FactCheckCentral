@@ -13,11 +13,17 @@
 .nav-head {
     @include flex-center();
     gap: 2vw;
+    @media (max-width: 768px) {
+        padding: 1vh 3vw;
+        gap: 3vw;
+    }
 }
 
 .nav-head1 {
     @include flex-center(column);
     align-items: flex-start;
+    @media (max-width: 768px) {
+    }
 
     h1 {
         text-transform: uppercase;
@@ -25,6 +31,9 @@
         font-weight: 400;
         font-size: $--42px;
         font-family: var(--font-bebas);
+        @media (max-width: 768px) {
+            font-size: $--34px;
+        }
     }
     p {
         margin-top: -1vh;
@@ -32,6 +41,18 @@
         color: white;
         font-family: "Open Sans", sans-serif;
         font-weight: 600;
+        @media (max-width: 768px) {
+            font-size: $--14px;
+        }
+    }
+}
+
+.nav-container {
+    @include flex-center();
+    gap: 5vw;
+    padding: 1vh 0;
+    @media (max-width: 768px) {
+        display: none;
     }
 }
 
@@ -48,12 +69,6 @@
             text-decoration: underline;
         }
     }
-}
-
-.nav-container {
-    @include flex-center();
-    gap: 5vw;
-    padding: 1vh 0;
 }
 
 .nav-fact-search-user {

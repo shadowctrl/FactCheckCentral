@@ -51,12 +51,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
     <div className="newsRender-parent">
       <div className="news-container">
         <div className="newsRender-left">
-          <Image
-            src={thumbnail}
-            width={138}
-            height={11}
-            className="rounded-md"
-          />
+          <Image src={thumbnail} width={138} height={11} />
           <div className="voteDetails-container">
             {!vote ? (
               <div>
