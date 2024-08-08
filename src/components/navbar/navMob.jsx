@@ -50,22 +50,22 @@ const NavMob = () => {
         />
         <Search />
         <ul className="nav-category-mob">
-          <Link href="/news/technology/1">
+          <Link href="/news/technology/1" onClick={() => handleClick()}>
             <li>Technology</li>
           </Link>
-          <Link href="/news/ai/1">
+          <Link href="/news/ai/1" onClick={() => handleClick()}>
             <li>AI</li>
           </Link>
-          <Link href="/news/science/1">
+          <Link href="/news/science/1" onClick={() => handleClick()}>
             <li>Science</li>
           </Link>
-          <Link href="/news/lifestyle/1">
+          <Link href="/news/lifestyle/1" onClick={() => handleClick()}>
             <li>Lifestyle</li>
           </Link>
-          <Link href="/news/politics/1">
+          <Link href="/news/politics/1" onClick={() => handleClick()}>
             <li>Politics</li>
           </Link>
-          <Link href="/news/sports/1">
+          <Link href="/news/sports/1" onClick={() => handleClick()}>
             <li>Sports</li>
           </Link>
         </ul>
