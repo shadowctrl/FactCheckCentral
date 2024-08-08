@@ -36,6 +36,10 @@
             border-radius: 2vw;
             width: 200px;
         }
+        div div {
+            margin: 0;
+            gap: 2vw;
+        }
     }
 }
 .newsRender-right {
@@ -119,6 +123,7 @@
     @media (max-width: 768px) {
         font-weight: 500;
         font-size: $--12px;
+        margin: 0;
     }
 }
 
