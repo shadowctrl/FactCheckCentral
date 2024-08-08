@@ -40,6 +40,11 @@ These, include:
 - Quick summary of news three
 
 The below two must be the heading based upon response.
+✅ This Information Has Been Fact-Checked And It Is Legitimate.
+
+❌ This Information Has Been Fact-Checked, But It Lacks Enough Proof.
+
+I'm displaying this in a website so please don't say anything like I'm unable to browser just the answers from the two scenario. Also don't include clickable links in words just give the links directly and make sure x and check emojis are placed. 
 `;
 
   const res = await openai.chat.completions.create({
