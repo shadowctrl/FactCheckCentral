@@ -47,7 +47,6 @@
         }
     }
     @media (max-width: 768px) {
-        margin-top: 5vh;
         font-size: $--16px;
         @include flex-center(column);
         gap: 1vh;

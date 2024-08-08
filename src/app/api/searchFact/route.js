@@ -38,6 +38,8 @@ These, include:
 - Quick summary of news one
 - Quick summary of news two
 - Quick summary of news three
+
+I'm displaying this in a website so don't include clickable links in words just give the links directly and make sure x and check emojis are placed. and dont use **. 
 `;
 
   const res = await openai.chat.completions.create({

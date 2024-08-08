@@ -29,7 +29,8 @@
     width: 25vw;
     @include flex-center(column);
     @media (max-width: 768px) {
-        width: 100%;
+        width: auto;
+        margin-right: 1vw;
     }
     a {
         font-family: "open sans", sans-serif;

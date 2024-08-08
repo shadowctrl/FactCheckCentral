@@ -129,17 +129,15 @@ body.no-scroll {
         height: 100%;
         width: 80vw;
         padding: 2vh 2vw;
-        padding-bottom: 5vh;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        gap: 3vh;
         transition: all 0.3s ease-in-out;
     }
 
     .nav-category-mob {
         @include flex-center(column);
         align-items: flex-start;
-        padding-top: 2vh;
         gap: 3vh;
         list-style-type: disc;
         padding-left: 30%;

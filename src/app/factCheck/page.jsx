@@ -87,9 +87,9 @@ const FactCheck = () => {
         <div className="loader"></div>
       ) : (
         message && (
-          <div className="fact-response">
+          <div className="fact-user-response">
             <Share title={title} message={message} />
-            <div className={`fact-response-para`}> {message}</div>
+            <div className={`fact-user-response-para`}> {message}</div>
           </div>
         )
       )}
