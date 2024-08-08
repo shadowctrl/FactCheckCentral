@@ -6,54 +6,28 @@ const openai = new OpenAI({
 export const POST = async (req) => {
   const { prompt } = await req.json();
   const content = `Can you factcheck this info: ${prompt}
-
-
-
 by searching on the web, if there are other similar results on major news outlets?
 
-
-
-Provide 2 answers scenario.
-
-
+Provide 3 answers scenario:
 
 Scenario 1:
-
-
-
 Yes, the content seems to be true and authentic, as reported by several sources.
 These, include
-(and provide links here)
-
-
+(and provide links here). Also, for each website source, provide a Trust score, based on the site's popularity.
 
 Scenario 2:
-
-
-
 No, we couldn't find enough information regarding this on authoritative news outlets. However, here's what we found:
+(and provide links that claim something different, or from minor outlets). Also, for each website source, provide a Trust score, based on the site's popularity.
 
-
-
-(provide links that say opposite or from minor outlets)
-
-
-
-Also, for each website source, provide a Trust score, based on the site's popularity.
-
-
+Scenario 3:
+No, we couldn't find enough information regarding this on authoritative news outlets. Therefore, the given information may be partially - or fully - inaccurate.
 
 Note: Only provide either scenario 1 or scenario 2, based on your web research. Do not include Scenario 1 heading in response.
-
-
+Note 2: Only use scenario 3 if you find zero relevant news. If you find just 1 or 2 news, use scenario 2 and mention just 1 or 2 news.
 
 Response example:
 
-
-
 Yes, the content seems to be true and authentic, as reported by several sources.
-
-
 
 These, include:
 - URL 1 - (Trust Score 8/10)
@@ -61,23 +35,16 @@ These, include:
 - URL 3 - (Trust Score 8/10)
 
 
-
 - Quick summary of news one
 - Quick summary of news two
 - Quick summary of news three
 
 The below two must be the heading based upon response.
-✅ This Information Has Been Fact-Checked And It Is Legitimate.
-
-❌ This Information Has Been Fact-Checked, But It Lacks Enough Proof.
-
-I'm displaying this in a website so please don't say anything like I'm unable to browser just the answers from the two scenario. Also don't include clickable links in words just give the links directly and make sure x and check emojis are placed. 
 `;
 
   const res = await openai.chat.completions.create({
     messages: [{ role: "user", content }],
     model: "gpt-4o",
   });
-
   return Response.json(res.choices[0].message.content);
 };
