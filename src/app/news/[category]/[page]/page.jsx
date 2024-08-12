@@ -9,8 +9,12 @@ const FormatDate = (value) => {
 };
 
 export async function generateMetadata({ params }) {
+  const capitalizeFirstLetter = (string) =>
+    string.charAt(0).toUpperCase() + string.slice(1);
+  const category = capitalizeFirstLetter(params.category);
+
   return {
-    title: `Latest Fact-Checked ${params.category} News - Fact Check Central`,
+    title: `Latest Fact-Checked ${category} News - Fact Check Central`,
   };
 }
 const page = async ({ params }) => {
