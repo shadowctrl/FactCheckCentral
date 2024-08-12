@@ -70,7 +70,7 @@ const NavMob = () => {
           </Link>
         </ul>
         <div className="nav-fact-search-user">
-          <Link href="/factCheck" target="_blank">
+          <Link href="/fact-checker" target="_blank">
             Fact-Checker <PiDetectiveFill style={{ fontSize: "1.5rem" }} />
           </Link>
         </div>

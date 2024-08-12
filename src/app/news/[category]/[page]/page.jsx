@@ -7,6 +7,12 @@ const FormatDate = (value) => {
   const date = new Date(value);
   return date.toLocaleString();
 };
+
+export async function generateMetadata({ params }) {
+  return {
+    title: `Latest Fact-Checked ${params.category} News - Fact Check Central`,
+  };
+}
 const page = async ({ params }) => {
   const maxpage = 5;
   if (params.page > 5) redirect(`/news/${params.category}/${maxpage}`);

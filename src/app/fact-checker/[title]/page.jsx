@@ -34,6 +34,10 @@ const parseMessage = (message) => {
   ));
 };
 
+export async function generateMetadata({ params }) {
+  const prompt = decodeURIComponent(params.title);
+  return { title: `Fact-Checked: ${prompt} - Fact Check Central` };
+}
 const Page = async ({ params }) => {
   const prompt = decodeURIComponent(params.title);
   const res = await fetch(`${process.env.base_url}/api/searchFact`, {

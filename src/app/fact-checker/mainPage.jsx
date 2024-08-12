@@ -46,6 +46,7 @@ const FactCheck = () => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Start loading animation
