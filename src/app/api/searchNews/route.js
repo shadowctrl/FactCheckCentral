@@ -44,17 +44,17 @@ const fetchNews = async (url, retries = 3) => {
 };
 
 export const POST = async (req, res) => {
-  const headersList = headers();
-  const allowedOrigin = [
-    "http://localhost:3000",
-    "https://fact-check-central.vercel.app",
-  ];
+  // const headersList = headers();
+  // const allowedOrigin = [
+  //   "http://localhost:3000",
+  //   "https://fact-check-central.vercel.app",
+  // ];
 
-  if (!allowedOrigin.includes(headersList.get("origin"))) {
-    return new Response("You are not authorised to access this resource", {
-      status: 401,
-    });
-  }
+  // if (!allowedOrigin.includes(headersList.get("origin"))) {
+  //   return new Response("You are not authorised to access this resource", {
+  //     status: 401,
+  //   });
+  // }
 
   const { query } = await req.json();
   const page = 1;
