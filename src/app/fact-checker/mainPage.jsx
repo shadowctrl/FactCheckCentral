@@ -56,7 +56,7 @@ const FactCheck = () => {
       method: "POST",
       body: JSON.stringify({ prompt }),
       headers: { "Content-Type": "application/json" },
-      next: { revalidate: 3600 },
+      next: { revalidate: 86400 },
     });
     const data = await res.json();
     const formattedMessage = parseMessage(data);
