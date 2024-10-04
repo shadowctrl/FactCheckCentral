@@ -1,6 +1,7 @@
 import { OpenAI } from "openai";
 const openai = new OpenAI({
-  apiKey: `${process.env.openai_api_key}`,
+  apiKey: `${process.env.perplexity_api_key}`,
+  baseURL: "https://api.perplexity.ai",
 });
 
 export const POST = async (req) => {
@@ -39,12 +40,12 @@ These, include:
 - Quick summary of news two
 - Quick summary of news three
 
-I'm displaying this in a website so don't include clickable links in words just give the links directly and make sure x and check emojis are placed. and dont use **. 
+IMPORZTANT NOTE: I'm displaying this in a website so don't include clickable links in words just give the links directly and make sure x and check emojis are placed. and dont use ** or ##. 
 `;
 
   const res = await openai.chat.completions.create({
     messages: [{ role: "user", content }],
-    model: "gpt-4o",
+    model: "llama-3.1-sonar-large-128k-online",
   });
   return Response.json(res.choices[0].message.content);
 };

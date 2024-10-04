@@ -95,10 +95,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             >
               <span>READ MORE</span>
             </Link>
-            <Link
-              href={`${process.env.base_url}/fact-checker/${title}`}
-              target="_blank"
-            >
+            <Link href={`/fact-checker/${title}`} target="_blank">
               <span className="fact-check cursor-pointer">
                 Fact-check this story
               </span>
