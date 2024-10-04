@@ -6,16 +6,15 @@ import { FaXTwitter, FaWhatsapp } from "react-icons/fa6"; // Updated icon
 import { IoLink, IoMailUnread } from "react-icons/io5";
 import { Alert } from "antd";
 const Share = ({ title, message }) => {
+  const factUrl = `${window.location.origin}/fact-checker/${title}`;
   const shareText = `*Check out this amazing fact score on Fact Check Central!* 
   
   *${title}*
   
-  ${message}`;
+  Link to Fact score - ${factUrl}`;
   const [alert, showAlert] = useState(false);
   const handleCopy = () => {
-    navigator.clipboard.writeText(
-      `${window.location.origin}/factCheck/${title}`
-    );
+    navigator.clipboard.writeText(factUrl);
     showAlert(true);
     setTimeout(() => {
       showAlert(false);
@@ -24,7 +23,7 @@ const Share = ({ title, message }) => {
 
   const handleShareViaEmail = () => {
     const emailSubject = "Check this out!";
-    const emailBody = `${shareText} ${window.location.href}`;
+    const emailBody = `${shareText}`;
     window.location.href = `mailto:?subject=${encodeURIComponent(
       emailSubject
     )}&body=${encodeURIComponent(emailBody)}`;
