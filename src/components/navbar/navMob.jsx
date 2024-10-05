@@ -68,11 +68,11 @@ const NavMob = () => {
           <Link href="/news/sports/1" onClick={() => handleClick()}>
             <li>Sports</li>
           </Link>
-          <Link href="/news/Health/1">
+          <Link href="/news/health/1">
             {" "}
             <li>Health</li>
           </Link>
-          <Link href="/news/Entertainment/1">
+          <Link href="/news/entertainment/1">
             {" "}
             <li>Entertainment</li>
           </Link>

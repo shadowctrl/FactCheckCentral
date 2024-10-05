@@ -19,7 +19,7 @@ const fetchWithRetry = async (url, retries = 3) => {
         headers: {
           "Ocp-Apim-Subscription-Key": apiKey,
         },
-        next: { revalidate: 21600 },
+        next: { revalidate: 28800 },
       });
 
       if (!response.ok) {
@@ -46,7 +46,7 @@ const fetchWithRetry = async (url, retries = 3) => {
   }
 };
 
-export const fetchNews = async (category, page = 1, count = 10) => {
+export const fetchNews = async (category, page = 1, count = 15) => {
   const offset = (page - 1) * count;
   const url = `https://api.bing.microsoft.com/v7.0/news/search?cc=us&category=${category}&count=${count}&offset=${offset}&q=${category}&sortBy=Date`;
 
