@@ -18,8 +18,8 @@ export async function generateMetadata({ params }) {
   };
 }
 const page = async ({ params }) => {
-  const maxpage = 5;
-  if (params.page > 5) redirect(`/news/${params.category}/${maxpage}`);
+  const maxpage = 7;
+  if (params.page > maxpage) redirect(`/news/${params.category}/${maxpage}`);
   const data = await fetchNews(params.category, params.page);
   return (
     <div>

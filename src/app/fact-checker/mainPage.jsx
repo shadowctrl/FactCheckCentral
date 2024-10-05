@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "./factcheckuser.scss";
 import "./[title]/factcheck.scss";
-import Link from "next/link"; // Assuming you're using Next.js, import Link
+import Link from "next/link";
 import Share from "@/components/share/share";
 
 const parseMessage = (message) => {
@@ -49,19 +49,18 @@ const FactCheck = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Start loading animation
+    setIsLoading(true);
     const prompt = e.target.elements.inputField.value;
     setTitle(prompt);
     const res = await fetch("/api/searchFact", {
       method: "POST",
       body: JSON.stringify({ prompt }),
       headers: { "Content-Type": "application/json" },
-      next: { revalidate: 86400 },
     });
     const data = await res.json();
     const formattedMessage = parseMessage(data);
     setMessage(formattedMessage);
-    setIsLoading(false); // Stop loading animation
+    setIsLoading(false);
   };
 
   return (
