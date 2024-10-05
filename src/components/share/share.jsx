@@ -1,18 +1,27 @@
 "use client";
 import "./share.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiShare } from "react-icons/fi";
 import { FaXTwitter, FaWhatsapp } from "react-icons/fa6"; // Updated icon
 import { IoLink, IoMailUnread } from "react-icons/io5";
 import { Alert } from "antd";
+
 const Share = ({ title, message }) => {
-  const factUrl = `${window.location.origin}/fact-checker/${title}`;
+  const [factUrl, setFactUrl] = useState("");
+  const [alert, showAlert] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setFactUrl(`${window.location.origin}/fact-checker/${title}`);
+    }
+  }, [title]);
+
   const shareText = `*Check out this amazing fact score on Fact Check Central!* 
   
   *${title}*
   
   Link to Fact score - ${factUrl}`;
-  const [alert, showAlert] = useState(false);
+
   const handleCopy = () => {
     navigator.clipboard.writeText(factUrl);
     showAlert(true);
@@ -31,7 +40,7 @@ const Share = ({ title, message }) => {
 
   const handleShareOnTwitter = () => {
     const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-      window.location.href
+      factUrl
     )}&text=${encodeURIComponent(shareText)}`;
     window.open(url, "_blank");
   };
@@ -42,10 +51,11 @@ const Share = ({ title, message }) => {
     )}`;
     window.open(url, "_blank");
   };
+
   const handleShareClick = () => {
     const shareContent = document.querySelector("#share-content");
     shareContent.classList.toggle("share-content-inactive");
-    shareContent.classList.toggle("share-content-active"); // Correct class name
+    shareContent.classList.toggle("share-content-active");
   };
 
   return (

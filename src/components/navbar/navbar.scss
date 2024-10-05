@@ -50,8 +50,8 @@
 
 .nav-container {
     @include flex-center();
-    gap: 5vw;
-    padding: 1vh 0;
+    gap: 1vw;
+    padding: 1vh 1vw;
     @media (max-width: 768px) {
         display: none;
     }
@@ -60,7 +60,8 @@
 .nav-category {
     @include flex-center();
     padding-top: 1vh;
-    gap: 5vw;
+    width: 100%;
+    justify-content: space-around;
     li {
         list-style-type: disc;
         font-weight: 500;
@@ -74,11 +75,11 @@
 
 .nav-fact-search-user {
     @include flex-center();
-
     a {
         @include flex-center();
         gap: 0.5vw;
         font-weight: 500;
+        white-space: nowrap;
         font-size: 1.3rem;
         letter-spacing: 1px;
         padding: 2px 15px;
