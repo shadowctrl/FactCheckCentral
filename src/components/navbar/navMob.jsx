@@ -68,6 +68,14 @@ const NavMob = () => {
           <Link href="/news/sports/1" onClick={() => handleClick()}>
             <li>Sports</li>
           </Link>
+          <Link href="/news/Health/1">
+            {" "}
+            <li>Health</li>
+          </Link>
+          <Link href="/news/Entertainment/1">
+            {" "}
+            <li>Entertainment</li>
+          </Link>
         </ul>
         <div className="nav-fact-search-user">
           <Link href="/fact-checker" target="_blank">
