@@ -44,7 +44,7 @@ const Page = async ({ params }) => {
     method: "POST",
     body: JSON.stringify({ prompt: `${prompt}` }),
     headers: { "Content-Type": "application/json" },
-    next: { revalidate: 3600 },
+    next: { revalidate: 28800 },
   });
   const message = await res.json();
   return (
