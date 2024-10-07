@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const url = "https://factcheckcentral.com";
+  const url = "https://factcheckcentral.org";
   return [
     {
       url: url,
