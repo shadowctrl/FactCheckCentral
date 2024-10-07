@@ -21,7 +21,7 @@ const fetchNews = async (url, retries = 3) => {
         headers: {
           "Ocp-Apim-Subscription-Key": apiKey,
         },
-        next: { revalidate: 3600 },
+        next: { revalidate: 28800 },
       });
 
       if (!response.ok) {
