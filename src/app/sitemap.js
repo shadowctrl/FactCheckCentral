@@ -2,12 +2,6 @@ export default function sitemap() {
   const url = "https://factcheckcentral.org";
   return [
     {
-      url: url,
-      lastModified: new Date(),
-      changeFrequency: "hourly",
-      priority: 1,
-    },
-    {
       url: `${url}/fact-checker`,
       lastModified: new Date(),
       changeFrequency: "hourly",
