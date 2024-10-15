@@ -1,5 +1,4 @@
 import RenderNews from "@/components/renderNews/renderNews";
-import { fetchNews } from "@/app/api/newsService";
 import Pagination from "@/components/pagination/pagination";
 import { redirect } from "next/navigation";
 
@@ -20,21 +19,21 @@ export async function generateMetadata({ params }) {
 const page = async ({ params }) => {
   const maxpage = 6;
   if (params.page > maxpage) redirect(`/news/${params.category}/${maxpage}`);
-  const data = await fetchNews(params.category, params.page);
+  const res = await fetch(process.env.base_url + "/api/getNews", {
+    method: "POST",
+    body: JSON.stringify({ category: params.category }),
+  });
+  const data = await res.json();
   return (
     <div>
       {data
         ? data.map((val, index) => (
             <RenderNews
               key={index}
-              thumbnail={
-                val.image?.thumbnail?.contentUrl
-                  ? val.image.thumbnail.contentUrl
-                  : "/test.svg"
-              }
+              thumbnail={val.thumbnail_url ? val.thumbnail_url : "/test.svg"}
               title={val.name}
               desc={val.description}
-              date={FormatDate(val.datePublished)}
+              date={FormatDate(val.publishedat)}
               refLink={val.url}
             />
           ))
