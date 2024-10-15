@@ -1,7 +1,7 @@
 import { Client } from "pg";
 
 export const POST = async (req) => {
-  const { category, page = 1, count = 8 } = await req.json();
+  const { category, page = 1, count = 15 } = await req.json();
   const client = new Client({
     connectionString: process.env.POSTGRESQL_URL,
     ssl: {

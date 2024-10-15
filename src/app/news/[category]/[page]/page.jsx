@@ -23,7 +23,7 @@ const page = async ({ params }) => {
     method: "POST",
     body: JSON.stringify({
       category: params.category,
-      count: 8,
+      count: 15,
       page: params.page,
     }),
   });
