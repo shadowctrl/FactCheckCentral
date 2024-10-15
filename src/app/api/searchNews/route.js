@@ -21,15 +21,11 @@ const fetchNews = async (url, retries = 3) => {
         headers: {
           "Ocp-Apim-Subscription-Key": apiKey,
         },
-        next: { revalidate: 28800 },
       });
 
       if (!response.ok) {
-        if (response.status === 429) {
-          attempts++;
-          continue;
-        }
-        throw new Error(`API call failed with status: ${response.status}`);
+        attempts++;
+        continue;
       }
 
       const data = await response.json();
