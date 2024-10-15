@@ -35,7 +35,7 @@ const page = async ({ params }) => {
             <RenderNews
               key={index}
               thumbnail={val.thumbnail_url ? val.thumbnail_url : "/test.svg"}
-              title={val.name}
+              title={val.title}
               desc={val.description}
               date={FormatDate(val.publishedat)}
               refLink={val.url}
