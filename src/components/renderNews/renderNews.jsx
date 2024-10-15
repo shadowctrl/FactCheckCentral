@@ -7,7 +7,7 @@ import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
   const [vote, setVote] = useState(null);
-  const [voteDetails, setVoteDetails] = useState(null); // Initialize as null to hide initially
+  const [voteDetails, setVoteDetails] = useState(null);
 
   const handleVote = async (value) => {
     if (value === "up") {

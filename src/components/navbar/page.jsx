@@ -13,8 +13,7 @@ const Navbar = () => {
             <Image src={"/logo.png"} width={106} height={102} />{" "}
           </Link>
           <div className="nav-head1">
-            <Link href="/news/world/1">
-              {" "}
+            <Link href="/topic/world/1">
               <h1>fact check central</h1>
             </Link>
             <p>
@@ -26,34 +25,34 @@ const Navbar = () => {
       </div>
       <div className="nav-container">
         <ul className="nav-category">
-          <Link href="/news/technology/1">
+          <Link href="/topic/technology/1">
             <li>Technology</li>
           </Link>
-          <Link href="/news/ai/1">
+          <Link href="/topic/ai/1">
             {" "}
             <li>AI</li>
           </Link>
-          <Link href="/news/science/1">
+          <Link href="/topic/science/1">
             {" "}
             <li>Science</li>
           </Link>
-          <Link href="/news/lifestyle/1">
+          <Link href="/topic/lifestyle/1">
             {" "}
             <li>Lifestyle</li>
           </Link>
-          <Link href="/news/politics/1">
+          <Link href="/topic/politics/1">
             {" "}
             <li>Politics</li>
           </Link>
-          <Link href="/news/sports/1">
+          <Link href="/topic/sports/1">
             {" "}
             <li>Sports</li>
           </Link>
-          <Link href="/news/health/1">
+          <Link href="/topic/health/1">
             {" "}
             <li>Health</li>
           </Link>
-          <Link href="/news/entertainment/1">
+          <Link href="/topic/entertainment/1">
             {" "}
             <li>Entertainment</li>
           </Link>
