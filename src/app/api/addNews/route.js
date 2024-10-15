@@ -51,6 +51,7 @@ export const GET = async () => {
     "Sports",
     "Health",
     "Entertainment",
+    "World",
   ];
 
   const client = new Client({
@@ -84,7 +85,7 @@ export const GET = async () => {
           url,
           datePublished,
           description,
-          category,
+          category.toLowerCase(),
           thumbnail_url,
         ]);
       }
