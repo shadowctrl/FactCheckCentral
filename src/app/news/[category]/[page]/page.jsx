@@ -21,7 +21,11 @@ const page = async ({ params }) => {
   if (params.page > maxpage) redirect(`/news/${params.category}/${maxpage}`);
   const res = await fetch(process.env.base_url + "/api/getNews", {
     method: "POST",
-    body: JSON.stringify({ category: params.category }),
+    body: JSON.stringify({
+      category: params.category,
+      count: 8,
+      page: params.page,
+    }),
   });
   const data = await res.json();
   return (

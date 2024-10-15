@@ -1,7 +1,7 @@
 import { Client } from "pg";
 
 export const POST = async (req) => {
-  const { category } = await req.json();
+  const { category, page = 1, count = 8 } = await req.json();
   const client = new Client({
     connectionString: process.env.POSTGRESQL_URL,
     ssl: {
@@ -11,13 +11,15 @@ export const POST = async (req) => {
 
   try {
     await client.connect();
+    const offset = (page - 1) * count;
 
     const selectQuery = `
       SELECT title, url, publishedAt, description, thumbnail_url 
       FROM news 
-      WHERE category = $1;`;
+      WHERE category = $1 
+      LIMIT $2 OFFSET $3;`;
 
-    const res = await client.query(selectQuery, [category]);
+    const res = await client.query(selectQuery, [category, count, offset]);
 
     return new Response(JSON.stringify(res.rows), { status: 200 });
   } catch (error) {
