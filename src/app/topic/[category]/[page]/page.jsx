@@ -2,7 +2,7 @@ import RenderNews from "@/components/renderNews/renderNews";
 import Pagination from "@/components/pagination/pagination";
 import { redirect } from "next/navigation";
 
-const FormatDate = (value) => {
+export const FormatDate = (value) => {
   const date = new Date(value);
   return date.toLocaleString();
 };
@@ -39,6 +39,9 @@ const page = async ({ params }) => {
               desc={val.description}
               date={FormatDate(val.publishedat)}
               refLink={val.url}
+              intLink={
+                process.env.base_url + "/news/" + val.title.replace(/\s+/g, "-")
+              }
             />
           ))
         : ""}
