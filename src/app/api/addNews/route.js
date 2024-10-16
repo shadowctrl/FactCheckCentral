@@ -1,4 +1,9 @@
 const { Client } = require("pg");
+import { OpenAI } from "openai";
+const openai = new OpenAI({
+  apiKey: `${process.env.perplexity_api_key}`,
+  baseURL: "https://api.perplexity.ai",
+});
 
 const getApiKey = (() => {
   const apiKeys = [process.env.azure_api_key1, process.env.azure_api_key2];
@@ -80,12 +85,20 @@ export const GET = async () => {
         const newsArticles = await fetchNews(3, category);
 
         for (const article of newsArticles) {
-          const { name, url, datePublished, description } = article;
+          const { name, url, datePublished } = article;
 
           const thumbnail_url =
             article.image && article.image.thumbnail
               ? article.image.thumbnail.contentUrl
               : null;
+
+          const content = `Eloborate this news in 250 words: ${article.description}`;
+
+          const res = await openai.chat.completions.create({
+            messages: [{ role: "user", content }],
+            model: "llama-3.1-sonar-small-128k-online",
+          });
+          const description = res.choices[0].message.content;
 
           await client.query(insertQuery, [
             name,
