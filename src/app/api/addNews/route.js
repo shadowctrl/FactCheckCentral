@@ -92,7 +92,7 @@ export const GET = async () => {
               ? article.image.thumbnail.contentUrl
               : null;
 
-          const content = `Eloborate this news in 250 words: ${article.description}`;
+          const content = `Eloborate this news in 250 words: ${article.description}\n\n Add necessary '\n'. Don't add hashtags (#)`;
 
           const res = await openai.chat.completions.create({
             messages: [{ role: "user", content }],
