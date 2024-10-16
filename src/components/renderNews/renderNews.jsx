@@ -80,7 +80,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
         </div>
         <div className="newsRender-right">
           <Link
-            href={refLink}
+            href={process.env.base_url + "/news/" + title}
             target="_blank"
             rel="noopener noreferrer nofollow"
           >

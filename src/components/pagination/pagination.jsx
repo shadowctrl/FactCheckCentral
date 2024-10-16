@@ -14,7 +14,7 @@ const Pagination = ({ category, maxPage, page }) => {
         <div key={`page` + index} className="page-container">
           <button
             className={value == page ? "page-active" : ""}
-            onClick={() => router.push(`/news/${category}/${value}`)}
+            onClick={() => router.push(`/topic/${category}/${value}`)}
           >
             {value}
           </button>
