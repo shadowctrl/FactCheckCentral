@@ -41,7 +41,14 @@ const fetchNews = async (retries = 3, query) => {
   }
 };
 
+const sendImmediateResponse = () => {
+  return new Response("Request received. Processing in the background...", {
+    status: 202,
+  });
+};
+
 export const GET = async () => {
+  const immediateResponse = sendImmediateResponse();
   const categories = [
     "Technology",
     "AI",
@@ -53,48 +60,48 @@ export const GET = async () => {
     "Entertainment",
     "World",
   ];
+  (async () => {
+    const client = new Client({
+      connectionString: process.env.POSTGRESQL_URL,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    });
 
-  const client = new Client({
-    connectionString: process.env.POSTGRESQL_URL,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
+    try {
+      await client.connect();
 
-  try {
-    await client.connect();
-
-    const insertQuery = `
+      const insertQuery = `
       INSERT INTO news (title, url, publishedAt, description, category,thumbnail_url)
       VALUES ($1, $2, $3, $4, $5,$6)
       ON CONFLICT (url) DO NOTHING;`;
 
-    for (const category of categories) {
-      const newsArticles = await fetchNews(3, category);
+      for (const category of categories) {
+        const newsArticles = await fetchNews(3, category);
 
-      for (const article of newsArticles) {
-        const { name, url, datePublished, description } = article;
+        for (const article of newsArticles) {
+          const { name, url, datePublished, description } = article;
 
-        const thumbnail_url =
-          article.image && article.image.thumbnail
-            ? article.image.thumbnail.contentUrl
-            : null;
+          const thumbnail_url =
+            article.image && article.image.thumbnail
+              ? article.image.thumbnail.contentUrl
+              : null;
 
-        await client.query(insertQuery, [
-          name,
-          url,
-          datePublished,
-          description,
-          category.toLowerCase(),
-          thumbnail_url,
-        ]);
+          await client.query(insertQuery, [
+            name,
+            url,
+            datePublished,
+            description,
+            category.toLowerCase(),
+            thumbnail_url,
+          ]);
+        }
       }
+    } catch (error) {
+      console.error("Error inserting data into PostgreSQL", error);
+    } finally {
+      await client.end();
     }
-  } catch (error) {
-    console.error("Error inserting data into PostgreSQL", error);
-  } finally {
-    await client.end();
-
-    return new Response("", { status: 200 });
-  }
+  })();
+  return immediateResponse;
 };
