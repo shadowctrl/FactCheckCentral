@@ -38,8 +38,7 @@ const page = async ({ params }) => {
               title={val.title}
               desc={val.description}
               date={FormatDate(val.publishedat)}
-              refLink={val.url}
-              intLink={
+              refLink={
                 process.env.base_url + "/news/" + val.title.replace(/\s+/g, "-")
               }
             />

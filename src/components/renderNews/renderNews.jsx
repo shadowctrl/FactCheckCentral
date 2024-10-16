@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
-const RenderNews = ({ thumbnail, title, desc, date, refLink, intLink }) => {
+const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
   const [vote, setVote] = useState(null);
   const [voteDetails, setVoteDetails] = useState(null);
 
@@ -80,13 +80,13 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink, intLink }) => {
         </div>
         <div className="newsRender-right">
           <Link
-            href={intLink}
+            href={refLink}
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
             <h1>{title}</h1>
           </Link>
-          <p>{desc}...</p>
+          <p>{desc}</p>
           <div className="flex justify-between">
             <Link
               href={refLink}

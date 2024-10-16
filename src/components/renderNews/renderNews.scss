@@ -69,9 +69,11 @@
         font-weight: lighter;
         line-height: $--26px;
         text-align: justify;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
         text-overflow: ellipsis;
         overflow: hidden;
-        white-space: no-wrap;
         margin-bottom: 1vh;
         @media (max-width: 768px) {
             font-weight: 300;
