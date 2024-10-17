@@ -97,7 +97,7 @@ const Page = async ({ params }) => {
                   href={
                     process.env.base_url +
                     "/news/" +
-                    encodeURIComponent(data.title.replace(/\s+/g, "-"))
+                    encodeURIComponent(value.title.replace(/\s+/g, "-"))
                   }
                 >
                   {" "}
@@ -109,7 +109,7 @@ const Page = async ({ params }) => {
                     href={
                       process.env.base_url +
                       "/news/" +
-                      encodeURIComponent(data.title.replace(/\s+/g, "-"))
+                      encodeURIComponent(value.title.replace(/\s+/g, "-"))
                     }
                   >
                     Continue Reading
