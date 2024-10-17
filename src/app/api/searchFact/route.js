@@ -40,7 +40,7 @@ These, include:
 - Quick summary of news two
 - Quick summary of news three
 
-IMPORTANT NOTE: I'm displaying this in a website so don't include clickable links in words just give the links directly and make sure x and check emojis are placed. and dont use ** or ##. 
+IMPORTANT NOTE1: Don't include clickable links in words just give the links directly and dont use ** or ##.
 `;
 
   const res = await openai.chat.completions.create({
