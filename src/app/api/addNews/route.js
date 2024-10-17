@@ -101,7 +101,7 @@ export const GET = async () => {
           const description = res.choices[0].message.content;
 
           await client.query(insertQuery, [
-            name,
+            name.replace(/-/g, " "),
             url,
             datePublished,
             description,
