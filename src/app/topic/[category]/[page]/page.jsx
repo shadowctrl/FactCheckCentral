@@ -26,6 +26,7 @@ const page = async ({ params }) => {
       count: 15,
       page: params.page,
     }),
+    cache: "no-cache",
   });
   const data = await res.json();
   return (
@@ -39,7 +40,9 @@ const page = async ({ params }) => {
               desc={val.description}
               date={FormatDate(val.publishedat)}
               refLink={
-                process.env.base_url + "/news/" + val.title.replace(/\s+/g, "-")
+                process.env.base_url +
+                "/news/" +
+                encodeURIComponent(val.title.replace(/\s+/g, "-"))
               }
             />
           ))
