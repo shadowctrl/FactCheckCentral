@@ -10,6 +10,7 @@ const fetchSingleNews = async (title) => {
     body: JSON.stringify({
       title,
     }),
+    cache: "no-store",
   });
   const info = await res.json();
   const data = info[0];
@@ -28,13 +29,18 @@ const latestNews = async (category) => {
 };
 const Page = async ({ params }) => {
   const title = decodeURIComponent(params.title.replace(/-/g, " "));
+  console.log("HHEllo:", params.title, title);
   const data = await fetchSingleNews(title);
   const latestData = await latestNews(data.category);
 
   return (
     <div className="news-parent">
       <div className="news-head">
-        <Image src={data.thumbnail_url} width={200} height={400} />
+        <Image
+          src={data.thumbnail_url ? data.thumbnail_url : "/test.svg"}
+          width={200}
+          height={400}
+        />
         <div>
           <h1>
             <Link
