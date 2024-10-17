@@ -4,7 +4,7 @@ export const POST = async (req) => {
   const { title } = await req.json();
 
   const client = new Client({
-    connectionString: process.env.POSTGRESQL_URL,
+    connectionString: process.env.postgresql_URL,
     ssl: {
       rejectUnauthorized: false,
     },

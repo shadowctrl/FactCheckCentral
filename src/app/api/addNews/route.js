@@ -67,7 +67,7 @@ export const GET = async () => {
   ];
   (async () => {
     const client = new Client({
-      connectionString: process.env.POSTGRESQL_URL,
+      connectionString: process.env.postgresql_URL,
       ssl: {
         rejectUnauthorized: false,
       },
