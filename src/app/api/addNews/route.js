@@ -17,7 +17,7 @@ const getApiKey = (() => {
 })();
 
 const fetchNews = async (retries = 3, query) => {
-  const count = 8;
+  const count = 1;
   const url = `https://api.bing.microsoft.com/v7.0/news/search?cc=us&&count=${count}&q=${query}&offset=0&sortBy=Date`;
 
   let attempts = 0;
@@ -56,14 +56,14 @@ export const GET = async () => {
   const immediateResponse = sendImmediateResponse();
   const categories = [
     "Technology",
-    "AI",
-    "Science",
-    "Lifestyle",
-    "Politics",
-    "Sports",
-    "Health",
-    "Entertainment",
-    "World",
+    // "AI",
+    // "Science",
+    // "Lifestyle",
+    // "Politics",
+    // "Sports",
+    // "Health",
+    // "Entertainment",
+    // "World",
   ];
   (async () => {
     const client = new Client({
@@ -77,8 +77,8 @@ export const GET = async () => {
       await client.connect();
 
       const insertQuery = `
-      INSERT INTO news (title, url, publishedAt, description, category,thumbnail_url)
-      VALUES ($1, $2, $3, $4, $5,$6)
+      INSERT INTO news (title, url, publishedAt, description, category, thumbnail_url, factcheck)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
       ON CONFLICT (url) DO NOTHING;`;
 
       for (const category of categories) {
@@ -100,6 +100,17 @@ export const GET = async () => {
           });
           const description = res.choices[0].message.content;
 
+          const factcheckResult = await fetch(
+            process.env.base_url + "/api/searchFact",
+            {
+              method: "POST",
+              body: JSON.stringify({
+                prompt: name,
+              }),
+            }
+          );
+          const factcheckResultRes = await factcheckResult.json();
+
           await client.query(insertQuery, [
             name.replace(/-/g, " "),
             url,
@@ -107,6 +118,7 @@ export const GET = async () => {
             description,
             category.toLowerCase(),
             thumbnail_url,
+            factcheckResultRes,
           ]);
         }
       }

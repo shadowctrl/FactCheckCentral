@@ -45,7 +45,7 @@ IMPORTANT NOTE: I'm displaying this in a website so don't include clickable link
 
   const res = await openai.chat.completions.create({
     messages: [{ role: "user", content }],
-    model: "llama-3.1-sonar-large-128k-online",
+    model: "llama-3.1-sonar-small-128k-online",
   });
   return Response.json(res.choices[0].message.content);
 };
