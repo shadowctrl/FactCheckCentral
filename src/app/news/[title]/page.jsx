@@ -27,12 +27,18 @@ const latestNews = async (category) => {
   const info = await res.json();
   return info;
 };
+
+const getUniqueLatestNews = (latestData, currentUrl, count = 3) => {
+  const uniqueLatestData = latestData.filter((news) => news.url !== currentUrl);
+  return uniqueLatestData.slice(0, count);
+};
+
 const Page = async ({ params }) => {
   const title = decodeURIComponent(params.title.replace(/-/g, " "));
-  console.log("HHEllo:", params.title, title);
   const data = await fetchSingleNews(title);
   const latestData = await latestNews(data.category);
 
+  const uniqueLatestData = getUniqueLatestNews(latestData, data.url);
   return (
     <div className="news-parent">
       <div className="news-head">
@@ -78,7 +84,7 @@ const Page = async ({ params }) => {
       <div className="news-latest">
         <h2>More Latest News in {data.category}</h2>
         <div className="news-latest-container-parent">
-          {latestData.slice(2, 5).map((value, index) => (
+          {uniqueLatestData.map((value, index) => (
             <div key={index} className="news-latest-container">
               <Image
                 src={value.thumbnail_url ? value.thumbnail_url : "/test.svg"}
@@ -87,17 +93,28 @@ const Page = async ({ params }) => {
               />
 
               <div className="news-latest-right-container">
-                <h3>{value.title} </h3>
-                <p>{value.description}</p>
                 <Link
                   href={
                     process.env.base_url +
                     "/news/" +
-                    value.title.replace(/\s+/g, "-")
+                    encodeURIComponent(data.title.replace(/\s+/g, "-"))
                   }
                 >
-                  Continue Reading
-                </Link>
+                  {" "}
+                  <h3>{value.title}</h3>
+                </Link>{" "}
+                <p>{value.description}</p>
+                <div className="news-read-more">
+                  <Link
+                    href={
+                      process.env.base_url +
+                      "/news/" +
+                      encodeURIComponent(data.title.replace(/\s+/g, "-"))
+                    }
+                  >
+                    Continue Reading
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

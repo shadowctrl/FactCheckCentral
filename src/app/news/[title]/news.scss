@@ -119,6 +119,7 @@
             -webkit-line-clamp: 2;
             text-overflow: ellipsis;
             overflow: hidden;
+            color: black;
         }
 
         p {
@@ -142,12 +143,6 @@
             -webkit-line-clamp: 3;
             text-overflow: ellipsis;
             overflow: hidden;
-        }
-
-        a {
-            color: $color-theme;
-            text-decoration: underline;
-            font-size: $--16px;
         }
     }
 }
