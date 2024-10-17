@@ -97,6 +97,10 @@
 
     h2 {
         font-size: $--42px;
+        a {
+            color: $color-theme;
+            text-decoration: underline;
+        }
     }
 
     .news-latest-container {
@@ -151,4 +155,27 @@
     @include flex-center();
     gap: 2vw;
     align-items: flex-end;
+}
+
+.news-fact-check {
+    padding: 2vh 0;
+    .news-fact-check-head {
+        text-align: center;
+
+        h2 {
+            color: $color-theme;
+            font-size: $--42px;
+            line-height: 44px;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: $--24px;
+            line-height: 26px;
+            span {
+                color: $color-theme;
+                padding: 0 2px;
+            }
+        }
+    }
 }

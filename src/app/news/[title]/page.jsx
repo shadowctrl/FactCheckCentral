@@ -1,8 +1,10 @@
 import RenderNews from "@/components/renderNews/renderNews";
 import Image from "next/image";
 import { FormatDate } from "@/app/topic/[category]/[page]/page";
+import FactcheckFormat from "@/helper/factcheckFormat";
 import Link from "next/link";
 import "./news.scss";
+import Share from "@/components/share/share";
 
 const fetchSingleNews = async (title) => {
   const res = await fetch(process.env.base_url + "/api/getSingleNews", {
@@ -81,8 +83,29 @@ const Page = async ({ params }) => {
         </Link>
       </div>
       <div className="news-border" />
+      <div className="news-fact-check">
+        <div className="news-fact-check-head">
+          <h2>Your fact-checking result is here!!</h2>
+          <p>
+            Our advanced AI algorithms browsed the web to fact-check the
+            autenthicity for "<span>{data.title}</span>". Find below an accurate
+            report.
+          </p>
+        </div>
+        <div className="fact-check-response">
+          <Share title={data.title} message={data.factcheck} />
+          {FactcheckFormat(data.factcheck)}
+        </div>
+      </div>
+      <div className="news-border" />
       <div className="news-latest">
-        <h2>More Latest News in {data.category}</h2>
+        <h2>
+          More{" "}
+          <Link href={process.env.base_url + "/topic/" + data.category + "/1"}>
+            {data.category}
+          </Link>{" "}
+          Fact-Checked News
+        </h2>
         <div className="news-latest-container-parent">
           {uniqueLatestData.map((value, index) => (
             <div key={index} className="news-latest-container">

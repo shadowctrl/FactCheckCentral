@@ -56,3 +56,31 @@ body {
     right: 0%;
   }
 }
+
+.fact-check-response {
+  border: 1px solid rgb(0, 0, 0, 0.3);
+  border-radius: 1vw;
+  box-shadow: 0vw 0vw 1vw 2px $color-theme;
+  margin: 5vh 0;
+  padding: 3vh 2vw;
+  color: rgb(0, 0, 0, 0.7);
+  text-align: left;
+  line-height: $--32px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+
+  a {
+    color: skyblue;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: $--16px;
+    @include flex-center(column);
+    gap: 1vh;
+    padding: 2vh 5vw;
+    margin-bottom: 5vh;
+  }
+}
