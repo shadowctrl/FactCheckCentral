@@ -88,7 +88,7 @@ const FactCheck = () => {
       ) : (
         message && (
           <div className="fact-user-response">
-            <Share title={title} message={message} />
+            <Share title={title.replaceAll(" ", "-")} message={message} />
             <div className={`fact-user-response-para`}> {message}</div>
           </div>
         )

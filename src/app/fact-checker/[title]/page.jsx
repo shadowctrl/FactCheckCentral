@@ -22,17 +22,15 @@ const fetchSingleNews = async (title) => {
 };
 
 const Page = async ({ params }) => {
-  const title = decodeURIComponent(params.title.replace(/-/g, " "));
+  const title = decodeURIComponent(params.title);
   const data = await fetchSingleNews(title);
 
   return (
     <div className="factcheck-parent">
       <h1>Your fact-checking result is here!!</h1>
-      <div className="fact-response">
-        <Share title={data.title} message={data.factcheck} />
-        <div className="fact-response-para">
-          {FactcheckFormat(data.factcheck)}
-        </div>
+      <div className="fact-check-response">
+        <Share title={encodeURIComponent(title)} message={data.factcheck} />
+        {FactcheckFormat(data.factcheck)}
       </div>
     </div>
   );

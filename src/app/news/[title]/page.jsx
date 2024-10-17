@@ -36,7 +36,7 @@ const getUniqueLatestNews = (latestData, currentUrl, count = 3) => {
 };
 
 const Page = async ({ params }) => {
-  const title = decodeURIComponent(params.title.replace(/-/g, " "));
+  const title = decodeURIComponent(params.title);
   const data = await fetchSingleNews(title);
   const latestData = await latestNews(data.category);
 
@@ -56,7 +56,7 @@ const Page = async ({ params }) => {
               rel="noopener noreferrer nofollow"
               target="_blank"
             >
-              {data.title}
+              {data.title.replaceAll("-", " ")}
             </Link>
           </h1>
 
@@ -88,8 +88,8 @@ const Page = async ({ params }) => {
           <h2>Your fact-checking result is here!!</h2>
           <p>
             Our advanced AI algorithms browsed the web to fact-check the
-            autenthicity for "<span>{data.title}</span>". Find below an accurate
-            report.
+            autenthicity for "<span>{data.title.replaceAll("-", " ")}</span>".
+            Find below an accurate report.
           </p>
         </div>
         <div className="fact-check-response">

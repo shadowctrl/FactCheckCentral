@@ -84,7 +84,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
-            <h1>{title}</h1>
+            <h1>{title.replaceAll("-", " ")}</h1>
           </Link>
           <p>{desc}</p>
           <div className="flex justify-between">
@@ -95,7 +95,10 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
             >
               <span>READ MORE</span>
             </Link>
-            <Link href={`/fact-checker/${title}`} target="_blank">
+            <Link
+              href={`/fact-checker/${encodeURIComponent(title)}`}
+              target="_blank"
+            >
               <span className="fact-check cursor-pointer">
                 Fact-check this story
               </span>

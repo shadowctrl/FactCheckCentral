@@ -40,9 +40,7 @@ const page = async ({ params }) => {
               desc={val.description}
               date={FormatDate(val.publishedat)}
               refLink={
-                process.env.base_url +
-                "/news/" +
-                encodeURIComponent(val.title.replace(/\s+/g, "-"))
+                process.env.base_url + "/news/" + encodeURIComponent(val.title)
               }
             />
           ))
