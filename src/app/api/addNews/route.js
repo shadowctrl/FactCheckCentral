@@ -17,7 +17,7 @@ const getApiKey = (() => {
 })();
 
 const fetchNews = async (retries = 3, query) => {
-  const count = 1;
+  const count = 8;
   const url = `https://api.bing.microsoft.com/v7.0/news/search?cc=us&&count=${count}&q=${query}&offset=0&sortBy=Date`;
 
   let attempts = 0;
@@ -55,15 +55,15 @@ const sendImmediateResponse = () => {
 export const GET = async () => {
   const immediateResponse = sendImmediateResponse();
   const categories = [
-    // "Technology",
-    // "AI",
-    // "Science",
-    // "Lifestyle",
-    // "Politics",
-    // "Sports",
+    "Technology",
+    "AI",
+    "Science",
+    "Lifestyle",
+    "Politics",
+    "Sports",
     "Health",
-    // "Entertainment",
-    // "World",
+    "Entertainment",
+    "World",
   ];
   (async () => {
     const client = new Client({
