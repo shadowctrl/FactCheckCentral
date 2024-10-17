@@ -61,7 +61,7 @@ body {
   border: 1px solid rgb(0, 0, 0, 0.3);
   border-radius: 1vw;
   box-shadow: 0vw 0vw 1vw 2px $color-theme;
-  margin: 5vh 0;
+  margin: 3vh 0;
   padding: 3vh 2vw;
   color: rgb(0, 0, 0, 0.7);
   text-align: left;
@@ -69,6 +69,22 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 
+  strong {
+    color: black;
+    font-weight: 700;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
+  }
   a {
     color: skyblue;
     &:hover {

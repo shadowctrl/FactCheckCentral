@@ -60,8 +60,8 @@ export const GET = async () => {
     // "Science",
     // "Lifestyle",
     // "Politics",
-    "Sports",
-    // "Health",
+    // "Sports",
+    "Health",
     // "Entertainment",
     // "World",
   ];
