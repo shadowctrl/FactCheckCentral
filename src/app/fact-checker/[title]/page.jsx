@@ -1,58 +1,38 @@
 import Share from "@/components/share/share";
 import "./factcheck.scss";
 import Link from "next/link";
-
-const parseMessage = (message) => {
-  const lines = message.split("\n");
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-
-  return lines.map((line, index) => (
-    <div key={index}>
-      <p
-        style={
-          index === 0
-            ? { color: "rgb(0, 0, 0,1)", fontWeight: 700, fontSize: "20px" }
-            : { color: "rgb(0, 0, 0,0.7)", fontWeight: 600 }
-        }
-      >
-        {line.split(urlRegex).map((part, i) =>
-          urlRegex.test(part) ? (
-            <Link
-              key={i}
-              href={part}
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-            >
-              {part}
-            </Link>
-          ) : (
-            part
-          )
-        )}
-      </p>
-    </div>
-  ));
-};
+import FactcheckFormat from "@/helper/factcheckFormat";
 
 export async function generateMetadata({ params }) {
   const prompt = decodeURIComponent(params.title);
   return { title: `Fact-Checked: ${prompt} - Fact Check Central` };
 }
-const Page = async ({ params }) => {
-  const prompt = decodeURIComponent(params.title);
-  const res = await fetch(`${process.env.base_url}/api/searchFact`, {
+
+const fetchSingleNews = async (title) => {
+  const res = await fetch(process.env.base_url + "/api/getSingleNews", {
     method: "POST",
-    body: JSON.stringify({ prompt: `${prompt}` }),
-    headers: { "Content-Type": "application/json" },
-    next: { revalidate: 3600 },
+    body: JSON.stringify({
+      title,
+    }),
+    cache: "no-store",
   });
-  const message = await res.json();
+  const info = await res.json();
+  const data = info[0];
+  return data;
+};
+
+const Page = async ({ params }) => {
+  const title = decodeURIComponent(params.title.replace(/-/g, " "));
+  const data = await fetchSingleNews(title);
+
   return (
     <div className="factcheck-parent">
       <h1>Your fact-checking result is here!!</h1>
       <div className="fact-response">
-        <Share title={prompt} message={message} />
-        <div className="fact-response-para">{parseMessage(message)}</div>
+        <Share title={data.title} message={data.factcheck} />
+        <div className="fact-response-para">
+          {FactcheckFormat(data.factcheck)}
+        </div>
       </div>
     </div>
   );
