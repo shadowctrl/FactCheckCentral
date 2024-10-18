@@ -152,8 +152,10 @@
 }
 
 .news-latest-container-parent {
-    @include flex-center();
-    gap: 2vw;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 2vw;
+    row-gap: 5vh;
     align-items: flex-end;
 }
 
