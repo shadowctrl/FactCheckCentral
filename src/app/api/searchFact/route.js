@@ -31,16 +31,16 @@ Response example:
 Yes, the content seems to be true and authentic, as reported by several sources.
 
 These, include:
-- URL 1 - (Trust Score 8/10)
-- URL 2 - (Trust Score 7/10)
-- URL 3 - (Trust Score 8/10)
+- [URL 1] - (Trust Score 8/10)
+- [URL 2] - (Trust Score 7/10)
+- [URL 3] - (Trust Score 8/10)
 
 
 - Quick summary of news one
 - Quick summary of news two
 - Quick summary of news three
 
-IMPORTANT NOTE: Don't include clickable links in words just give the links directly and dont use ** or ##.
+IMPORTANT NOTE: Provide the Links (URL's) directly. Don't use ** or ##.
 `;
 
   const res = await openai.chat.completions.create({
