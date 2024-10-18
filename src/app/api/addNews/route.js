@@ -55,14 +55,14 @@ const sendImmediateResponse = () => {
 export const GET = async () => {
   const immediateResponse = sendImmediateResponse();
   const categories = [
-    "Technology",
-    "AI",
-    "Science",
-    "Lifestyle",
-    "Politics",
-    "Sports",
-    "Health",
-    "Entertainment",
+    // "Technology",
+    // "AI",
+    // "Science",
+    // "Lifestyle",
+    // "Politics",
+    // "Sports",
+    // "Health",
+    // "Entertainment",
     "World",
   ];
   (async () => {
@@ -92,11 +92,11 @@ export const GET = async () => {
               ? article.image.thumbnail.contentUrl
               : null;
 
-          const content = `Eloborate this news in 250 words: ${article.description}\n\n Add Necessary line breaks (<br /> <br />). Don't add hashtags (#) nor Asterisks (*) `;
+          const content = `Eloborate this news in 250 words: ${article.description}\n\n Add Necessary pair of line breaks (<br /> <br />). Don't add hashtags (#) nor bold any text (that is Asterisks (**)) `;
 
           const res = await openai.chat.completions.create({
             messages: [{ role: "user", content }],
-            model: "llama-3.1-sonar-small-128k-online",
+            model: "llama-3.1-sonar-huge-128k-online",
           });
           const description = res.choices[0].message.content;
 
