@@ -30,7 +30,7 @@ const latestNews = async (category) => {
   return info;
 };
 
-const getUniqueLatestNews = (latestData, currentUrl, count = 3) => {
+const getUniqueLatestNews = (latestData, currentUrl, count = 6) => {
   const uniqueLatestData = latestData.filter((news) => news.url !== currentUrl);
   return uniqueLatestData.slice(0, count);
 };
@@ -71,7 +71,7 @@ const Page = async ({ params }) => {
         </div>
       </div>
       <div className="news-description">
-        <p>{data.description}</p>
+        <p dangerouslySetInnerHTML={{ __html: data.description }} />
       </div>
       <div className="news-read-more">
         <Link
