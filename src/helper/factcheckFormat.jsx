@@ -4,11 +4,9 @@ const FactcheckFormat = (message) => {
   const lines = message.split("\n");
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   const parenthesesRegex = /\(([^)]+)\)/g;
-
-  // Array of words/phrases to emphasize
   const emphasizeWords = ["quick summary"];
+  const strongTagRegex = /\*\*(.*?)\*\*/g; // Correct regex to match **text**
 
-  // Determine the emoji based on the first line
   const emoji = lines[0].toLowerCase().startsWith("yes") ? "✅" : "❌";
   const modifiedFirstLine = `${emoji} ${lines[0]}`;
 
@@ -16,9 +14,15 @@ const FactcheckFormat = (message) => {
     // Replace specified words with strong tags
     let formattedLine = line;
     emphasizeWords.forEach((word) => {
-      const regex = new RegExp(`(${word})`, "gi"); // Create a regex for case-insensitive matching
+      const regex = new RegExp(`(${word})`, "gi");
       formattedLine = formattedLine.replace(regex, "<strong>$1</strong>");
     });
+
+    // Wrap text inside **text** with strong tags
+    formattedLine = formattedLine.replace(
+      strongTagRegex,
+      "<strong>$1</strong>"
+    );
 
     return formattedLine.split(urlRegex).flatMap((part, i) => {
       // Replace text inside parentheses with strong tags
@@ -26,7 +30,6 @@ const FactcheckFormat = (message) => {
         return `(<strong>${p1}</strong>)`;
       });
 
-      // Check if the part matches the URL regex
       if (urlRegex.test(part)) {
         return (
           <Link
@@ -39,7 +42,6 @@ const FactcheckFormat = (message) => {
           </Link>
         );
       } else {
-        // Return a span with dangerouslySetInnerHTML for strong tags
         return (
           <span key={i} dangerouslySetInnerHTML={{ __html: formattedPart }} />
         );
