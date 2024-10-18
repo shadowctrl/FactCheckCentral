@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
-const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
+const RenderNews = ({ thumbnail, title, desc, date, refLink, intLink }) => {
   const [vote, setVote] = useState(null);
   const [voteDetails, setVoteDetails] = useState(null);
 
@@ -80,7 +80,7 @@ const RenderNews = ({ thumbnail, title, desc, date, refLink }) => {
         </div>
         <div className="newsRender-right">
           <Link
-            href={refLink}
+            href={intLink}
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
