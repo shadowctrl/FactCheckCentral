@@ -28,4 +28,4 @@ export default function RootLayout({ children }) {
   );
 }
 
-export const revalidate = 3600;
+export const fetchCache = "no-store";
