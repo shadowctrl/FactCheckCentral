@@ -55,14 +55,14 @@ const sendImmediateResponse = () => {
 export const GET = async () => {
   const immediateResponse = sendImmediateResponse();
   const categories = [
-    // "Technology",
-    // "AI",
-    // "Science",
-    // "Lifestyle",
-    // "Politics",
-    // "Sports",
-    // "Health",
-    // "Entertainment",
+    "Technology",
+    "AI",
+    "Science",
+    "Lifestyle",
+    "Politics",
+    "Sports",
+    "Health",
+    "Entertainment",
     "World",
   ];
   (async () => {
