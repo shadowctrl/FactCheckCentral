@@ -17,6 +17,7 @@ export const POST = async (req) => {
       SELECT title, url, publishedAt, description, thumbnail_url 
       FROM news 
       WHERE category = $1 
+      ORDER BY publishedAt DESC
       LIMIT $2 OFFSET $3;`;
 
     const res = await client.query(selectQuery, [category, count, offset]);
