@@ -1,11 +1,4 @@
-import { Pool } from "pg";
-
-const pool = new Pool({
-  connectionString: process.env.postgresql_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+import pool from "@/lib/db";
 
 export const POST = async (req) => {
   const client = await pool.connect();

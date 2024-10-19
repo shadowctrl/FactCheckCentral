@@ -1,4 +1,4 @@
-const { Client } = require("pg");
+import pool from "@/lib/db";
 import { OpenAI } from "openai";
 const openai = new OpenAI({
   apiKey: `${process.env.perplexity_api_key}`,
@@ -66,13 +66,7 @@ export const GET = async () => {
     "World",
   ];
   (async () => {
-    const client = new Client({
-      connectionString: process.env.postgresql_URL,
-      ssl: {
-        rejectUnauthorized: false,
-      },
-    });
-
+    const client = await pool();
     try {
       await client.connect();
 
@@ -125,7 +119,7 @@ export const GET = async () => {
     } catch (error) {
       console.error("Error inserting data into PostgreSQL", error);
     } finally {
-      await client.end();
+      client.release();
     }
   })();
   return immediateResponse;

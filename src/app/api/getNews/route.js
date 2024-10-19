@@ -1,16 +1,10 @@
-import { Client } from "pg";
+import pool from "@/lib/db";
 
 export const POST = async (req) => {
   const { category, page = 1, count = 15 } = await req.json();
-  const client = new Client({
-    connectionString: process.env.postgresql_URL,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
+  const client = await pool.connect();
 
   try {
-    await client.connect();
     const offset = (page - 1) * count;
 
     const selectQuery = `
@@ -29,6 +23,6 @@ export const POST = async (req) => {
       status: 500,
     });
   } finally {
-    await client.end();
+    client.release();
   }
 };
