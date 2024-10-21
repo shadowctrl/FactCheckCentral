@@ -66,10 +66,8 @@ export const GET = async () => {
     "World",
   ];
   (async () => {
-    const client = await pool();
+    const client = await pool.connect();
     try {
-      await client.connect();
-
       const insertQuery = `
       INSERT INTO news (title, url, publishedAt, description, category, thumbnail_url, factcheck)
       VALUES ($1, $2, $3, $4, $5, $6, $7)
