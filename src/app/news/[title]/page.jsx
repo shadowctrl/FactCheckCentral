@@ -87,9 +87,9 @@ const Page = async ({ params }) => {
         <div className="news-fact-check-head">
           <h2>Your fact-checking result is here!!</h2>
           <p>
-            Our advanced AI algorithms browsed the web to fact-check the
-            autenthicity for "<span>{data.title.replaceAll("-", " ")}</span>".
-            Find below an accurate report.
+            Our advanced AI algorithms browsed the web to verify the
+            authenticity of "<span>{data.title.replaceAll("-", " ")}</span>".
+            elow is an accurate report.
           </p>
         </div>
         <div className="fact-check-response">
