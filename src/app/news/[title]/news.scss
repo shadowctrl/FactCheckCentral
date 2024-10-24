@@ -14,10 +14,14 @@
         h1 {
             font-size: $--48px;
             line-height: 50px;
+            @media (max-width: 768px) {
+                font-size: $--38px;
+                line-height: 40px;
+            }
         }
         .news-head-para {
             @include flex-center();
-            justify-content: flex-start;
+            justify-content: space-between;
             gap: 2vw;
             padding-top: 1vh;
 
@@ -34,6 +38,9 @@
                 &:hover {
                     background-color: $color-theme;
                 }
+                @media (max-width: 768px) {
+                    height: fit-content;
+                }
             }
             span {
                 font-family:
@@ -49,8 +56,27 @@
                     "Helvetica Neue",
                     sans-serif;
                 font-size: $--14px;
-                font-weight: 100;
+                font-weight: 300;
             }
+            @media (max-width: 768px) {
+                flex-direction: column;
+            }
+        }
+
+        .news-verified-check {
+            display: flex;
+            gap: 2px;
+            align-items: center;
+
+            p {
+                font-size: $--18px;
+                line-height: 20px;
+                letter-spacing: 0.5px;
+            }
+        }
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 2vh;
         }
     }
 
@@ -101,6 +127,11 @@
             color: $color-theme;
             text-decoration: underline;
         }
+        @media (max-width: 768px) {
+            font-size: $--38px;
+            text-align: center;
+            line-height: 38px;
+        }
     }
 
     .news-latest-container {
@@ -116,14 +147,19 @@
         gap: 1vh;
         align-items: flex-start;
         h3 {
-            font-size: 32px;
-            line-height: 34px;
+            font-size: 30px;
+            line-height: 32px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
             text-overflow: ellipsis;
             overflow: hidden;
             color: black;
+
+            @media (max-width: 768px) {
+                text-align: center;
+                font-size: $--32px;
+            }
         }
 
         p {
@@ -144,9 +180,15 @@
             font-size: $--14px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             text-overflow: ellipsis;
             overflow: hidden;
+
+            @media (max-width: 768px) {
+                font-size: $--16px;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
 }
@@ -154,9 +196,15 @@
 .news-latest-container-parent {
     display: grid;
     grid-template-columns: auto auto auto;
-    column-gap: 2vw;
+    column-gap: 3vw;
     row-gap: 5vh;
     align-items: flex-end;
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 3vh;
+    }
 }
 
 .news-fact-check {
@@ -178,13 +226,24 @@
                 color: $color-theme;
                 padding: 0 2px;
             }
+
+            @media (max-width: 768px) {
+                font-size: 20px;
+            }
         }
     }
 
     .fact-check-response {
+        margin: auto;
+        margin-top: 5vh;
+        max-width: 75%;
         p {
             color: black;
             padding: 3px 0;
+        }
+
+        @media (max-width: 768px) {
+            max-width: 100%;
         }
     }
 }
