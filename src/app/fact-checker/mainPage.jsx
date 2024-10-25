@@ -1,46 +1,8 @@
 "use client";
 import { useState } from "react";
 import "./factcheckuser.scss";
-import "./[title]/factcheck.scss";
-import Link from "next/link";
 import Share from "@/components/share/share";
-
-const parseMessage = (message) => {
-  const lines = message.split("\n");
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  return lines.map((line, index) => (
-    <div key={index}>
-      <p
-        style={
-          index === 0
-            ? {
-                color: "rgb(0, 0, 0,1)",
-                fontWeight: 700,
-                fontSize: "20px",
-                marginTop: "-4vh",
-                paddingBottom: "2vh",
-              }
-            : { color: "rgb(0, 0, 0,0.7)", fontWeight: 600 }
-        }
-      >
-        {line.split(urlRegex).map((part, i) =>
-          urlRegex.test(part) ? (
-            <Link
-              key={i}
-              href={part}
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-            >
-              {part}
-            </Link>
-          ) : (
-            part
-          )
-        )}
-      </p>
-    </div>
-  ));
-};
+import FactcheckFormat from "@/helper/factcheckFormat";
 
 const FactCheck = () => {
   const [message, setMessage] = useState("");
@@ -58,7 +20,7 @@ const FactCheck = () => {
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
-    const formattedMessage = parseMessage(data);
+    const formattedMessage = FactcheckFormat(data);
     setMessage(formattedMessage);
     setIsLoading(false);
   };
@@ -87,9 +49,11 @@ const FactCheck = () => {
         <div className="loader"></div>
       ) : (
         message && (
-          <div className="fact-user-response">
-            <Share title={title.replaceAll(" ", "-")} message={message} />
-            <div className={`fact-user-response-para`}> {message}</div>
+          <div className="fact-check-response">
+            <div>
+              <Share title={title.replaceAll(" ", "-")} message={message} />
+              <div className={`fact-user-response-para`}> {message}</div>
+            </div>
           </div>
         )
       )}
