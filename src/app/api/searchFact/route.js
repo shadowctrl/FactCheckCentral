@@ -31,13 +31,13 @@ Response example:
 Yes, the content seems to be true and authentic, as reported by several sources.
 
 These, include:
-- [URL 1] - (Trust Score 8/10)
-- [URL 2] - (Trust Score 7/10)
-- [URL 3] - (Trust Score 8/10)
-
-
+1. (URL 1) - (Trust Score 8/10)
 - Quick summary of news one
+
+2. (URL 2) - (Trust Score 7/10)
 - Quick summary of news two
+
+3. (URL 3) - (Trust Score 8/10)
 - Quick summary of news three
 
 IMPORTANT NOTE: Provide the Links (URL's) directly. Don't use ** or ##.
