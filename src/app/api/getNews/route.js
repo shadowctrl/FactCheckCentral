@@ -9,7 +9,7 @@ export const POST = async (req) => {
 
     const selectQuery = `
       SELECT title, url, publishedAt, description, thumbnail_url 
-      FROM news 
+      FROM fccnews 
       WHERE category = $1 
       ORDER BY publishedAt DESC
       LIMIT $2 OFFSET $3;`;

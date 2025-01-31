@@ -7,7 +7,7 @@ export const POST = async (req) => {
   try {
     const selectQuery = `
       SELECT * 
-      FROM news 
+      FROM fccnews 
       WHERE title = $1;`;
 
     const res = await client.query(selectQuery, [title]);

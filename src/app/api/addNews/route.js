@@ -69,7 +69,7 @@ export const GET = async () => {
     const client = await pool.connect();
     try {
       const insertQuery = `
-      INSERT INTO news (title, url, publishedAt, description, category, thumbnail_url, factcheck)
+      INSERT INTO fccnews (title, url, publishedAt, description, category, thumbnail_url, factcheck)
       VALUES ($1, $2, $3, $4, $5, $6, $7)
       ON CONFLICT (url) DO NOTHING;`;
 

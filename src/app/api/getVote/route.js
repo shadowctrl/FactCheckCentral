@@ -6,7 +6,7 @@ export const POST = async (req) => {
     const { title } = await req.json();
 
     const res = await client.query(
-      "SELECT vote FROM votings WHERE title = $1",
+      "SELECT vote FROM fccvotings WHERE title = $1",
       [title]
     );
 

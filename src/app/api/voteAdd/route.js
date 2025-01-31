@@ -4,20 +4,21 @@ export const POST = async (req) => {
   const client = await pool.connect();
   try {
     const { title } = await req.json();
-    const res = await client.query("SELECT * FROM votings WHERE title = $1", [
-      title,
-    ]);
+    const res = await client.query(
+      "SELECT * FROM fccvotings WHERE title = $1",
+      [title]
+    );
 
     if (res.rows.length > 0) {
       await client.query(
-        "UPDATE votings SET vote = vote + 1 WHERE title = $1",
+        "UPDATE fccvotings SET vote = vote + 1 WHERE title = $1",
         [title]
       );
     } else {
-      await client.query("INSERT INTO votings (title, vote) VALUES ($1, $2)", [
-        title,
-        1,
-      ]);
+      await client.query(
+        "INSERT INTO fccvotings (title, vote) VALUES ($1, $2)",
+        [title, 1]
+      );
     }
 
     return new Response("", { status: 200 });
