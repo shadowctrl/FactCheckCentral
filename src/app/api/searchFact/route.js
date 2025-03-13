@@ -45,7 +45,7 @@ IMPORTANT NOTE: Provide the Links (URL's) directly. Don't use ** or ##.
 
   const res = await openai.chat.completions.create({
     messages: [{ role: "user", content }],
-    model: "llama-3.1-sonar-small-128k-online",
+    model: "sonar",
   });
   return Response.json(res.choices[0].message.content);
 };
